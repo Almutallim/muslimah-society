@@ -1,49 +1,275 @@
 <!doctype html>
 <html lang="fr">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Audithèque</title>
-<style>
-  body{font-family:system-ui;background:#FCFAF8;margin:0;padding:18px}
-  .card{background:#fff;border-radius:18px;padding:14px;box-shadow:0 10px 25px rgba(0,0,0,.06);max-width:900px;margin:12px auto}
-  .item{padding:10px 0;border-top:1px solid #eee}
-  .item:first-child{border-top:0}
-  audio{width:100%; margin-top:8px}
-  .muted{color:#666}
-</style>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Audithèque — Muslimah Society</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+:root{
+      --rose:#E8D7DF;
+      --mauve:#C8B6D8;
+      --beige:#F5EFE8;
+      --cream:#FCFAF8;
+      --gold:#C6A86B;
+      --text:#2C2C2C;
+      --shadow: 0 18px 45px rgba(0,0,0,.08);
+      --shadow2: 0 10px 30px rgba(0,0,0,.06);
+      --radius: 26px;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:'Montserrat',sans-serif;
+      background:var(--cream);
+      color:var(--text);
+      line-height:1.6;
+      padding-top:90px;
+    }
+    h1,h2,h3{font-family:'Playfair Display',serif}
+    a{color:inherit}
+
+    .navbar{
+      position:fixed; top:0; left:0; right:0;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:18px 28px;
+      background:rgba(255,255,255,.78);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(200,182,216,.35);
+      z-index:999;
+    }
+
+    .logo{
+      font-family:'Playfair Display',serif;
+      font-size:22px;
+      letter-spacing:.2px;
+      color:var(--gold);
+      display:flex; align-items:center; gap:10px;
+      text-decoration:none;
+    }
+    .logo-badge{
+      width:34px;height:34px;border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--beige));
+      border: 1px solid rgba(198,168,107,.35);
+      box-shadow: 0 8px 20px rgba(0,0,0,.06);
+      position:relative;
+    }
+    .logo-badge::after{
+      content:"";
+      position:absolute; inset:8px;
+      border-radius:50%;
+      border: 1px dashed rgba(198,168,107,.55);
+      opacity:.9;
+    }
+
+    .nav-links{
+      list-style:none;
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+    .nav-links a{
+      text-decoration:none;
+      color:rgba(200,182,216,.95);
+      font-weight:500;
+      padding:10px 12px;
+      border-radius:999px;
+      transition:.25s;
+    }
+    .nav-links a:hover{
+      background: rgba(232,215,223,.55);
+      color:#8f77a9;
+    }
+    .nav-cta{
+      background: rgba(200,182,216,.28);
+      border: 1px solid rgba(200,182,216,.35);
+      color:#8f77a9 !important;
+    }
+    .nav-cta:hover{ background: rgba(232,215,223,.55) !important; }
+
+    .site-footer{
+      margin-top: 80px;
+      background: rgba(255,255,255,.78);
+      border-top: 1px solid rgba(200,182,216,.25);
+      padding: 40px 18px 18px;
+      color: rgba(44,44,44,.75);
+    }
+    .footer-inner{
+      width:min(1100px,100%);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 1.2fr 1.8fr;
+      gap: 22px;
+      align-items:start;
+    }
+    .footer-logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-family:'Playfair Display',serif;
+      color: var(--gold);
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .footer-muted{ color: rgba(44,44,44,.62); font-size: 14px; max-width: 420px; }
+    .footer-cols{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+    }
+    .footer-col h4{
+      font-family:'Playfair Display',serif;
+      font-size: 16px;
+      color: rgba(44,44,44,.90);
+      margin-bottom: 10px;
+    }
+    .footer-col a{
+      display:block;
+      text-decoration:none;
+      padding: 8px 10px;
+      border-radius: 12px;
+      color: rgba(143,119,169,.92);
+      transition: .2s;
+      font-weight: 500;
+    }
+    .footer-col a:hover{
+      background: rgba(232,215,223,.45);
+      color:#8f77a9;
+    }
+    .footer-bottom{
+      width:min(1100px,100%);
+      margin: 18px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid rgba(200,182,216,.25);
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      font-size: 13px;
+      color: rgba(44,44,44,.62);
+    }
+    .footer-link{ text-decoration:none; color: rgba(143,119,169,.92); font-weight:600; }
+    .footer-link:hover{ text-decoration:underline; }
+    .footer-sep{ opacity:.7; }
+
+    @media (max-width: 900px){
+      .nav-links{display:none;}
+      body{padding-top:80px;}
+      .footer-inner{grid-template-columns:1fr;}
+      .footer-cols{grid-template-columns:1fr;}
+    }
+
+  main.page{width:min(980px,100%); margin:0 auto; padding:32px 18px;}
+  .card{background:rgba(255,255,255,.85); border:1px solid rgba(200,182,216,.25); border-radius:26px; box-shadow:var(--shadow2); padding:18px;}
+  .muted{color:rgba(44,44,44,.68);}
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;border:1px solid rgba(200,182,216,.35);text-decoration:none;font-weight:600;transition:.2s;box-shadow:var(--shadow2); cursor:pointer}
+  .btn:hover{transform:translateY(-2px); box-shadow:var(--shadow);}
+  .btn.primary{background:rgba(232,215,223,.92); color:#fff; border-color:rgba(255,255,255,.6);}
+  .btn.secondary{background:rgba(200,182,216,.92); color:#fff; border-color:rgba(255,255,255,.6);}
+  .btn.ghost{background:rgba(255,255,255,.65); color:#8f77a9;}
+  .stack{display:flex; flex-direction:column; gap:12px;}
+  .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
+  input{width:min(420px,100%); padding:12px 14px; border-radius:999px; border:1px solid rgba(200,182,216,.35); outline:none; background:rgba(255,255,255,.70);}
+
+
+  </style>
 </head>
 <body>
-  <div class="card">
-    <h1>🎧 Audithèque</h1>
-    <p class="muted">Contenu protégé (audio via lien signé).</p>
-    <div id="list">Chargement…</div>
-  </div>
+<header class="navbar">
+    <a class="logo" href="index.html"><span class="logo-badge"></span>Muslimah Society</a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="library.html">Bibliothèque</a></li>
+        <li><a href="audio.html">Audithèque</a></li>
+        <li><a href="vip-events.html">Événements</a></li>
+        <li><a href="pricing.html">Abonnements</a></li>
+        <li><a href="dashboard.html">Espace membre</a></li>
+        <li><a href="login.html" class="nav-cta">Connexion</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/supabaseClient.js"></script>
-  <script src="js/gate.js"></script>
-  <script>
-    (async () => {
-      await requireMember();
+<main class="page">
 
-      const { data, error } = await supabaseClient
-        .from("content_items")
-        .select("title, tier, storage_bucket, storage_path")
-        .eq("kind","audio")
-        .order("id",{ascending:false});
+<section class="card stack">
+  <h1 style="color:var(--gold); font-family:'Playfair Display',serif;">Audithèque</h1>
+  <p class="muted">Audios protégés : accessible uniquement si abonnement actif.</p>
+  <div id="list" class="muted">Chargement…</div>
+</section>
 
-      if(error){ document.getElementById("list").textContent = error.message; return; }
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabaseClient.js"></script>
+<script src="js/gate.js"></script>
+<script>
+  (async () => {
+    await requireMember();
+    const { data, error } = await supabaseClient
+      .from("content_items")
+      .select("title, tier, storage_bucket, storage_path")
+      .eq("kind","audio")
+      .order("id",{ascending:false});
 
-      const items = await Promise.all((data||[]).map(async (it) => {
-        const url = await signedUrl(it.storage_bucket, it.storage_path, 90);
-        return `
-          <div class="item">
-            <div><b>${it.title}</b> (${it.tier})</div>
-            <audio controls preload="none" src="${url}"></audio>
-          </div>`;
-      }));
+    if(error){ document.getElementById("list").textContent = error.message; return; }
 
-      document.getElementById("list").innerHTML = items.join("") || "Aucun audio (ajoute des items dans la table content_items).";
-    })();
-  </script>
+    const items = await Promise.all((data||[]).map(async (it) => {
+      const url = await signedUrl(it.storage_bucket, it.storage_path, 90);
+      return `
+        <div style="padding:12px 0; border-top:1px solid rgba(200,182,216,.22);">
+          <div><b>${it.title}</b> (${it.tier})</div>
+          <audio controls preload="none" style="width:100%; margin-top:8px" src="${url}"></audio>
+        </div>`;
+    }));
+
+    document.getElementById("list").innerHTML = items.join("") || "Aucun audio pour l’instant.";
+  })();
+</script>
+
+</main>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo"><span class="logo-badge"></span><span>Muslimah Society</span></div>
+        <p class="footer-muted">Bibliothèque • Audithèque • Événements • Communauté</p>
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Plateforme</h4>
+          <a href="pricing.html">Abonnements</a>
+          <a href="dashboard.html">Espace membre</a>
+          <a href="login.html">Connexion</a>
+          <a href="register.html">Inscription</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contenus</h4>
+          <a href="library.html">Bibliothèque</a>
+          <a href="audio.html">Audithèque</a>
+          <a href="vip-events.html">Soirées VIP</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Liens</h4>
+          <a href="index.html">Accueil</a>
+          <a href="index.html#piliers">Piliers</a>
+          <a href="index.html#programmes">Programmes</a>
+          <a href="index.html#newsletter">Newsletter</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Muslimah Society — Tous droits réservés</span>
+      <span class="footer-sep">•</span>
+      <a href="#" class="footer-link">Mentions légales</a>
+      <span class="footer-sep">•</span>
+      <a href="#" class="footer-link">Politique de confidentialité</a>
+    </div>
+  </footer>
 </body>
 </html>
+
