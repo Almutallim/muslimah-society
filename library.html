@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bibliothèque</title>
+<style>
+  body{font-family:system-ui;background:#FCFAF8;margin:0;padding:18px}
+  .card{background:#fff;border-radius:18px;padding:14px;box-shadow:0 10px 25px rgba(0,0,0,.06);max-width:900px;margin:12px auto}
+  a{color:#8f77a9;font-weight:700;text-decoration:none}
+  .muted{color:#666}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>📚 Bibliothèque</h1>
+    <p class="muted">Contenu protégé (liens signés temporaires).</p>
+    <div id="list">Chargement…</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/gate.js"></script>
+  <script>
+    (async () => {
+      await requireMember();
+
+      const { data, error } = await supabaseClient
+        .from("content_items")
+        .select("title, tier, storage_bucket, storage_path")
+        .eq("kind","pdf")
+        .order("id",{ascending:false});
+
+      if(error){ document.getElementById("list").textContent = error.message; return; }
+
+      const items = await Promise.all((data||[]).map(async (it) => {
+        const url = await signedUrl(it.storage_bucket, it.storage_path, 90);
+        return `<p>• <b>${it.title}</b> (${it.tier}) — <a href="${url}" target="_blank" rel="noopener">Ouvrir</a></p>`;
+      }));
+
+      document.getElementById("list").innerHTML = items.join("") || "Aucun contenu (ajoute des items dans la table content_items).";
+    })();
+  </script>
+</body>
+</html>

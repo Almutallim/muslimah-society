@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Audithèque</title>
+<style>
+  body{font-family:system-ui;background:#FCFAF8;margin:0;padding:18px}
+  .card{background:#fff;border-radius:18px;padding:14px;box-shadow:0 10px 25px rgba(0,0,0,.06);max-width:900px;margin:12px auto}
+  .item{padding:10px 0;border-top:1px solid #eee}
+  .item:first-child{border-top:0}
+  audio{width:100%; margin-top:8px}
+  .muted{color:#666}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>🎧 Audithèque</h1>
+    <p class="muted">Contenu protégé (audio via lien signé).</p>
+    <div id="list">Chargement…</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/gate.js"></script>
+  <script>
+    (async () => {
+      await requireMember();
+
+      const { data, error } = await supabaseClient
+        .from("content_items")
+        .select("title, tier, storage_bucket, storage_path")
+        .eq("kind","audio")
+        .order("id",{ascending:false});
+
+      if(error){ document.getElementById("list").textContent = error.message; return; }
+
+      const items = await Promise.all((data||[]).map(async (it) => {
+        const url = await signedUrl(it.storage_bucket, it.storage_path, 90);
+        return `
+          <div class="item">
+            <div><b>${it.title}</b> (${it.tier})</div>
+            <audio controls preload="none" src="${url}"></audio>
+          </div>`;
+      }));
+
+      document.getElementById("list").innerHTML = items.join("") || "Aucun audio (ajoute des items dans la table content_items).";
+    })();
+  </script>
+</body>
+</html>

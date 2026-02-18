@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Espace membre — Muslimah Society</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:Montserrat,sans-serif;background:#FCFAF8;margin:0}
+    header{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;background:#fff;box-shadow:0 10px 25px rgba(0,0,0,.06)}
+    .brand{font-family:"Playfair Display",serif;color:#C6A86B;font-size:20px}
+    .btn{padding:10px 14px;border-radius:999px;border:0;cursor:pointer;font-weight:500}
+    .secondary{background:#C8B6D8;color:#fff}
+    main{padding:30px 18px;max-width:980px;margin:0 auto}
+    .card{background:#fff;border-radius:22px;padding:18px;box-shadow:0 18px 45px rgba(0,0,0,.06);margin:14px 0}
+    a{color:#8f77a9;text-decoration:none;font-weight:600}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">Muslimah Society</div>
+    <button class="btn secondary" id="logout">Déconnexion</button>
+  </header>
+
+  <main>
+    <div class="card">
+      <h1 style="font-family:'Playfair Display',serif;margin:0 0 6px;color:#2C2C2C">Votre espace</h1>
+      <div id="status">Chargement…</div>
+    </div>
+
+    <div class="card">
+      <h2 style="font-family:'Playfair Display',serif;margin:0 0 10px">Accès</h2>
+      <p><a href="library.html">📚 Bibliothèque</a></p>
+      <p><a href="audio.html">🎧 Audithèque</a></p>
+      <p><a href="vip-events.html">👑 Soirées VIP</a></p>
+      <p><a href="pricing.html">💳 Gérer / Souscrire</a></p>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/gate.js"></script>
+  <script>
+    (async () => {
+      await requireAuth();
+      const p = await getProfile();
+      document.getElementById("status").innerHTML =
+        p ? `Statut : <b>${p.subscription_status}</b> — Niveau : <b>${p.subscription_tier}</b>` : "Profil introuvable";
+    })();
+
+    document.getElementById("logout").addEventListener("click", logout);
+  </script>
+</body>
+</html>
