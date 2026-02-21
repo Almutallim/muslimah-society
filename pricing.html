@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-:root{
+    :root{
       --rose:#E8D7DF;
       --mauve:#C8B6D8;
       --beige:#F5EFE8;
@@ -89,171 +89,101 @@
     }
     .nav-cta:hover{ background: rgba(232,215,223,.55) !important; }
 
-    .site-footer{
-      margin-top: 80px;
-      background: rgba(255,255,255,.78);
-      border-top: 1px solid rgba(200,182,216,.25);
-      padding: 40px 18px 18px;
-      color: rgba(44,44,44,.75);
-    }
-    .footer-inner{
-      width:min(1100px,100%);
-      margin:0 auto;
-      display:grid;
-      grid-template-columns: 1.2fr 1.8fr;
-      gap: 22px;
-      align-items:start;
-    }
-    .footer-logo{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-family:'Playfair Display',serif;
-      color: var(--gold);
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-    .footer-muted{ color: rgba(44,44,44,.62); font-size: 14px; max-width: 420px; }
-    .footer-cols{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 14px;
-    }
-    .footer-col h4{
-      font-family:'Playfair Display',serif;
-      font-size: 16px;
-      color: rgba(44,44,44,.90);
-      margin-bottom: 10px;
-    }
-    .footer-col a{
-      display:block;
-      text-decoration:none;
-      padding: 8px 10px;
-      border-radius: 12px;
-      color: rgba(143,119,169,.92);
-      transition: .2s;
-      font-weight: 500;
-    }
-    .footer-col a:hover{
-      background: rgba(232,215,223,.45);
-      color:#8f77a9;
-    }
-    .footer-bottom{
-      width:min(1100px,100%);
-      margin: 18px auto 0;
-      padding-top: 16px;
-      border-top: 1px solid rgba(200,182,216,.25);
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      justify-content:center;
-      font-size: 13px;
-      color: rgba(44,44,44,.62);
-    }
-    .footer-link{ text-decoration:none; color: rgba(143,119,169,.92); font-weight:600; }
-    .footer-link:hover{ text-decoration:underline; }
-    .footer-sep{ opacity:.7; }
-
     @media (max-width: 900px){
       .nav-links{display:none;}
       body{padding-top:80px;}
-      .footer-inner{grid-template-columns:1fr;}
-      .footer-cols{grid-template-columns:1fr;}
     }
 
-  main.page{width:min(980px,100%); margin:0 auto; padding:32px 18px;}
-  .card{background:rgba(255,255,255,.85); border:1px solid rgba(200,182,216,.25); border-radius:26px; box-shadow:var(--shadow2); padding:18px;}
-  .muted{color:rgba(44,44,44,.68);}
-  .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;border:1px solid rgba(200,182,216,.35);text-decoration:none;font-weight:600;transition:.2s;box-shadow:var(--shadow2); cursor:pointer}
-  .btn:hover{transform:translateY(-2px); box-shadow:var(--shadow);}
-  .btn.primary{background:rgba(232,215,223,.92); color:#fff; border-color:rgba(255,255,255,.6);}
-  .btn.secondary{background:rgba(200,182,216,.92); color:#fff; border-color:rgba(255,255,255,.6);}
-  .btn.ghost{background:rgba(255,255,255,.65); color:#8f77a9;}
-  .stack{display:flex; flex-direction:column; gap:12px;}
-  .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
-  input{width:min(420px,100%); padding:12px 14px; border-radius:999px; border:1px solid rgba(200,182,216,.35); outline:none; background:rgba(255,255,255,.70);}
+    main.page{width:min(980px,100%); margin:0 auto; padding:32px 18px;}
+    .card{
+      position: relative;
+      z-index: 2;
+      background:rgba(255,255,255,.85);
+      border:1px solid rgba(200,182,216,.25);
+      border-radius:26px;
+      box-shadow:var(--shadow2);
+      padding:18px;
+    }
+    .muted{color:rgba(44,44,44,.68);}
+    .btn{
+      position: relative;
+      z-index: 3;
+      pointer-events: auto;
 
-
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 18px;
+      border-radius:999px;
+      border:1px solid rgba(200,182,216,.35);
+      text-decoration:none;
+      font-weight:600;
+      transition:.2s;
+      box-shadow:var(--shadow2);
+      cursor:pointer;
+      background: transparent;
+      font: inherit;
+    }
+    .btn:hover{transform:translateY(-2px); box-shadow:var(--shadow);}
+    .btn.primary{background:rgba(232,215,223,.92); color:#fff; border-color:rgba(255,255,255,.6);}
+    .btn.secondary{background:rgba(200,182,216,.92); color:#fff; border-color:rgba(255,255,255,.6);}
+    .btn.ghost{background:rgba(255,255,255,.65); color:#8f77a9;}
+    .stack{display:flex; flex-direction:column; gap:12px;}
+    .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
   </style>
 </head>
 <body>
+
 <header class="navbar">
-    <a class="logo" href="index.html"><span class="logo-badge"></span>Muslimah Society</a>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="library.html">Bibliothèque</a></li>
-        <li><a href="audio.html">Audithèque</a></li>
-        <li><a href="vip-events.html">Événements</a></li>
-        <li><a href="pricing.html">Abonnements</a></li>
-        <li><a href="dashboard.html">Espace membre</a></li>
-        <li><a href="login.html" class="nav-cta">Connexion</a></li>
-      </ul>
-    </nav>
-  </header>
+  <a class="logo" href="index.html"><span class="logo-badge"></span>Muslimah Society</a>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="library.html">Bibliothèque</a></li>
+      <li><a href="audio.html">Audithèque</a></li>
+      <li><a href="vip-events.html">Événements</a></li>
+      <li><a href="pricing.html">Abonnements</a></li>
+      <li><a href="dashboard.html">Espace membre</a></li>
+      <li><a href="login.html" class="nav-cta">Connexion</a></li>
+    </ul>
+  </nav>
+</header>
 
 <main class="page">
+  <section class="card stack">
+    <h1 style="color:var(--gold); font-family:'Playfair Display',serif;">Abonnements</h1>
+    <p class="muted">Member ou VIP. (Clique pour lancer Stripe Checkout.)</p>
 
-<section class="card stack">
-  <h1 style="color:var(--gold); font-family:'Playfair Display',serif;">Abonnements</h1>
-  <p class="muted">Member ou VIP. (Clique pour lancer Stripe Checkout.)</p>
-  <div class="row">
-    <a class="btn primary" href="#" onclick="checkout('member'); return false;">S’abonner (Member)</a>
-    <a class="btn secondary" href="#" onclick="checkout('vip'); return false;">S’abonner (VIP)</a>
-    <a class="btn ghost" href="dashboard.html">Espace membre</a>
-  </div>
-  <p class="muted" style="font-size:13px">Astuce : si tu n’es pas connectée, tu seras redirigée vers Connexion.</p>
-</section>
+    <div class="row">
+      <button class="btn primary" id="btnMember" type="button">S’abonner (Member)</button>
+      <button class="btn secondary" id="btnVIP" type="button">S’abonner (VIP)</button>
+      <a class="btn ghost" href="dashboard.html">Espace membre</a>
+    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/supabaseClient.js"></script>
-<script src="js/gate.js"></script>
-<script src="js/billing.js"></script>
-<script>requireAuth();</script>
+    <p class="muted" style="font-size:13px">
+      Astuce : si tu n’es pas connectée, tu seras redirigée vers Connexion.
+    </p>
+  </section>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/gate.js"></script>
+  <script src="js/billing.js"></script>
+
+  <script>
+    (async () => {
+      // 1) Vérifie connexion (redirige sinon)
+      await requireAuth();
+
+      // 2) Branche les boutons
+      const m = document.getElementById("btnMember");
+      const v = document.getElementById("btnVIP");
+
+      m.addEventListener("click", () => checkout("member"));
+      v.addEventListener("click", () => checkout("vip"));
+    })();
+  </script>
 </main>
 
-<footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="footer-logo"><span class="logo-badge"></span><span>Muslimah Society</span></div>
-        <p class="footer-muted">Bibliothèque • Audithèque • Événements • Communauté</p>
-      </div>
-
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h4>Plateforme</h4>
-          <a href="pricing.html">Abonnements</a>
-          <a href="dashboard.html">Espace membre</a>
-          <a href="login.html">Connexion</a>
-          <a href="register.html">Inscription</a>
-        </div>
-
-        <div class="footer-col">
-          <h4>Contenus</h4>
-          <a href="library.html">Bibliothèque</a>
-          <a href="audio.html">Audithèque</a>
-          <a href="vip-events.html">Soirées VIP</a>
-        </div>
-
-        <div class="footer-col">
-          <h4>Liens</h4>
-          <a href="index.html">Accueil</a>
-          <a href="index.html#piliers">Piliers</a>
-          <a href="index.html#programmes">Programmes</a>
-          <a href="index.html#newsletter">Newsletter</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <span>© 2026 Muslimah Society — Tous droits réservés</span>
-      <span class="footer-sep">•</span>
-      <a href="#" class="footer-link">Mentions légales</a>
-      <span class="footer-sep">•</span>
-      <a href="#" class="footer-link">Politique de confidentialité</a>
-    </div>
-  </footer>
 </body>
 </html>
-
