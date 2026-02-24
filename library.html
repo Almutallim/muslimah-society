@@ -161,19 +161,166 @@
       .footer-cols{grid-template-columns:1fr;}
     }
 
-  main.page{width:min(980px,100%); margin:0 auto; padding:32px 18px;}
-  .card{background:rgba(255,255,255,.85); border:1px solid rgba(200,182,216,.25); border-radius:26px; box-shadow:var(--shadow2); padding:18px;}
-  .muted{color:rgba(44,44,44,.68);}
-  .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;border:1px solid rgba(200,182,216,.35);text-decoration:none;font-weight:600;transition:.2s;box-shadow:var(--shadow2); cursor:pointer}
-  .btn:hover{transform:translateY(-2px); box-shadow:var(--shadow);}
-  .btn.primary{background:rgba(232,215,223,.92); color:#fff; border-color:rgba(255,255,255,.6);}
-  .btn.secondary{background:rgba(200,182,216,.92); color:#fff; border-color:rgba(255,255,255,.6);}
-  .btn.ghost{background:rgba(255,255,255,.65); color:#8f77a9;}
-  .stack{display:flex; flex-direction:column; gap:12px;}
-  .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
-  input{width:min(420px,100%); padding:12px 14px; border-radius:999px; border:1px solid rgba(200,182,216,.35); outline:none; background:rgba(255,255,255,.70);}
+    /* LIBRARY STYLES */
+    .library-header{
+      background: var(--rose);
+      padding: 60px 18px 40px;
+      text-align: center;
+      border-bottom: 1px solid rgba(200,182,216,.25);
+    }
+    .library-header h1{
+      font-size: clamp(32px, 4vw, 48px);
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .library-header p{
+      color: rgba(44,44,44,.72);
+      max-width: 680px;
+      margin: 0 auto;
+    }
 
+    .library-container{
+      width: min(1200px, 100%);
+      margin: 0 auto;
+      padding: 50px 18px;
+    }
 
+    /* FILTERS */
+    .filters{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 40px;
+      padding: 20px;
+      background: rgba(255,255,255,.60);
+      border-radius: 20px;
+      border: 1px solid rgba(200,182,216,.25);
+    }
+    .filter-btn{
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(200,182,216,.35);
+      background: rgba(255,255,255,.75);
+      color: var(--text);
+      font-weight: 500;
+      cursor: pointer;
+      transition: .25s;
+    }
+    .filter-btn:hover, .filter-btn.active{
+      background: var(--mauve);
+      color: #fff;
+      border-color: var(--mauve);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow2);
+    }
+
+    /* GRID */
+    .resources-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .resource-card{
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(200,182,216,.25);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: .3s;
+      box-shadow: var(--shadow2);
+      position: relative;
+    }
+    .resource-card:hover{
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+    }
+    .resource-card.hidden{
+      display: none;
+    }
+
+    .resource-cover{
+      height: 200px;
+      background: var(--rose);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      border-bottom: 1px solid rgba(200,182,216,.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .resource-cover::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.3), transparent 70%);
+    }
+
+    .resource-body{
+      padding: 20px;
+    }
+    .resource-category{
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--beige);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .resource-card h3{
+      font-size: 20px;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .resource-card p{
+      font-size: 14px;
+      color: rgba(44,44,44,.68);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .resource-card .btn{
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--mauve);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: .25s;
+      border: none;
+      cursor: pointer;
+    }
+    .resource-card .btn:hover{
+      background: var(--rose);
+      color: var(--text);
+      transform: translateY(-2px);
+    }
+
+    /* EMPTY STATE */
+    .empty-state{
+      text-align: center;
+      padding: 60px 20px;
+      color: rgba(44,44,44,.62);
+    }
+    .empty-state .icon{
+      font-size: 4rem;
+      margin-bottom: 16px;
+      opacity: .5;
+    }
+
+    @media (max-width: 768px){
+      .resources-grid{
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -192,43 +339,196 @@
     </nav>
   </header>
 
-<main class="page">
-
-<section class="card stack">
-  <h1 style="color:var(--gold); font-family:'Playfair Display',serif;">Bibliothèque</h1>
-  <p class="muted">Contenu protégé : accessible uniquement si abonnement actif.</p>
-  <div id="list" class="muted">Chargement…</div>
-
-  <div class="row">
-    <a class="btn ghost" href="pricing.html">Abonnements</a>
-    <a class="btn ghost" href="dashboard.html">Espace membre</a>
+  <div class="library-header">
+    <h1>Bibliothèque</h1>
+    <p>Ressources, planners, fiches et documents pour nourrir ton cheminement spirituel avec douceur et méthode.</p>
   </div>
-</section>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/supabaseClient.js"></script>
-<script src="js/gate.js"></script>
-<script>
-  (async () => {
-    await requireMember();
-    const { data, error } = await supabaseClient
-      .from("content_items")
-      .select("title, tier, storage_bucket, storage_path")
-      .eq("kind","pdf")
-      .order("id",{ascending:false});
+  <div class="library-container">
+    
+    <!-- FILTERS -->
+    <div class="filters">
+      <button class="filter-btn active" data-category="all">Tout</button>
+      <button class="filter-btn" data-category="fiqh">Fiqh</button>
+      <button class="filter-btn" data-category="aqidah">Aqidah</button>
+      <button class="filter-btn" data-category="tazkiya">Tazkiya</button>
+      <button class="filter-btn" data-category="sira">Sira</button>
+      <button class="filter-btn" data-category="planners">Planners</button>
+      <button class="filter-btn" data-category="fiches">Fiches</button>
+    </div>
 
-    if(error){ document.getElementById("list").textContent = error.message; return; }
+    <!-- GRID -->
+    <div class="resources-grid" id="resourcesGrid">
+      
+      <!-- FIQH -->
+      <article class="resource-card" data-category="fiqh">
+        <div class="resource-cover">📖</div>
+        <div class="resource-body">
+          <span class="resource-category">Fiqh</span>
+          <h3>Les ablutions parfaites</h3>
+          <p>Guide complet selon le madhab Hanbalite avec illustrations et du'as.</p>
+          <button class="btn" onclick="alert('Contenu disponible prochainement')">Télécharger</button>
+        </div>
+      </article>
 
-    const items = await Promise.all((data||[]).map(async (it) => {
-      const url = await signedUrl(it.storage_bucket, it.storage_path, 90);
-      return `<p>• <b>${it.title}</b> (${it.tier}) — <a href="${url}" target="_blank" rel="noopener">Ouvrir</a></p>`;
-    }));
+      <article class="resource-card" data-category="fiqh">
+        <div class="resource-cover">🕌</div>
+        <div class="resource-body">
+          <span class="resource-category">Fiqh</span>
+          <h3>La prière de la femme</h3>
+          <p>Description détaillée de chaque pilier et condition avec preuves.</p>
+          <button class="btn" onclick="alert('Contenu disponible prochainement')">Télécharger</button>
+        </div>
+      </article>
 
-    document.getElementById("list").innerHTML = items.join("") || "Aucun contenu pour l’instant.";
-  })();
-</script>
+      <article class="resource-card" data-category="fiqh">
+        <div class="resource-cover">🌙</div>
+        <div class="resource-body">
+          <span class="resource-category">Fiqh</span>
+          <h3>Le jeûne de Ramadan</h3>
+          <p>Règles essentielles, sunnas et sagesses du mois béni.</p>
+          <button class="btn" onclick="alert('Contenu disponible prochainement')">Télécharger</button>
+        </div>
+      </article>
 
-</main>
+      <!-- AQIDAH -->
+      <article class="resource-card" data-category="aqidah">
+        <div class="resource-cover">✨</div>
+        <div class="resource-body">
+          <span class="resource-category">Aqidah</span>
+          <h3>Les 6 piliers de la foi</h3>
+          <p>Explication claire et authentique selon les Salafs Salih.</p>
+          <button class="btn" onclick="alert('Contenu disponible prochainement')">Télécharger</button>
+        </div>
+      </article>
+
+      <article class="resource-card" data-category="aqidah">
+        <div class="resource-cover">💫</div>
+        <div class="resource-body">
+          <span class="resource-category">Aqidah</span>
+          <h3>Le Tawhid expliqué</h3>
+          <p>L'unicité d'Allah : fondement de notre religion.</p>
+          <button class="btn" onclick="alert('Contenu disponible prochainement')">Télécharger</button>
+        </div>
+      </article>
+
+      <!-- TAZKIYA -->
+      <article class="resource-card" data-category="tazkiya">
+        <div class="resource-cover">🌸</div>
+        <div class="resource-body">
+          <span class="resource-category">Tazkiya</span>
+          <h3>Purifier son cœur</h3>
+          <p>Programme de 30 jours pour réformer l'intention et l'âme.</p>
+          <button class="btn" onclick="alert('Contenu disponible prochainement')">Télécharger</button>
+        </div>
+      </article>
+
+      <article class="resource-card" data-category="tazkiya">
+        <div class="resource-cover">💝</div>
+        <div class="resource-body">
+          <span class="resource-category">Tazkiya</span>
+          <h3>Les maladies du cœur</h3>
+          <p>Identifier et soigner l'orgueil, la jalousie, l'ostentation.</p>
+          <button class="btn" onclick="alert('Contenu disponible prochainement')">Télécharger</button>
+        </div>
+      </article>
+
+      <article class="resource-card" data-category="tazkiya">
+        <div class="resource-cover">🕊️</div>
+        <div class="resource-body">
+          <span class="resource-category">Tazkiya</span>
+          <h3>La patience (Sabr)</h3>
+          <p>Comprendre et développer cette qualité prophétique.</p>
+          <button class="btn" onclick="alert('Contenu disponible prochainement')">Télécharger</button>
+        </div>
+      </article>
+
+      <!-- SIRA -->
+      <article class="resource-card" data-category="sira">
+        <div class="resource-cover">📜</div>
+        <div class="resource-body">
+          <span class="resource-category">Sira</span>
+          <h3>La vie du Prophète ﷺ</h3>
+          <p>Résumé authentique de sa noble biographie.</p>
+          <button class="btn" onclick="alert('Contenu disponible prochainement')">Télécharger</button>
+        </div>
+      </article>
+
+      <article class="resource-card" data-category="sira">
+        <div class="resource-cover">👑</div>
+        <div class="resource-body">
+          <span class="resource-category">Sira</span>
+          <h3>Les épouses du Prophète</h3>
+          <p>Portraits des Mères des croyants, modèles de vertu.</p>
+          <button class="btn" onclick="alert('Contenu disponible prochainement')">Télécharger</button>
+        </div>
+      </article>
+
+      <!-- PLANNERS -->
+      <article class="resource-card" data-category="planners">
+        <div class="resource-cover">📅</div>
+        <div class="resource-body">
+          <span class="resource-category">Planners</span>
+          <h3>Planner Ramadan 2026</h3>
+          <p>Organise ton mois béni avec élégance et méthode.</p>
+          <button class="btn" onclick="alert('Contenu disponible prochainement')">Télécharger</button>
+        </div>
+      </article>
+
+      <article class="resource-card" data-category="planners">
+        <div class="resource-cover">📔</div>
+        <div class="resource-body">
+          <span class="resource-category">Planners</span>
+          <h3>Journal de gratitude</h3>
+          <p>Cultive la reconnaissance et la présence à Allah.</p>
+          <button class="btn" onclick="alert('Contenu disponible prochainement')">Télécharger</button>
+        </div>
+      </article>
+
+      <article class="resource-card" data-category="planners">
+        <div class="resource-cover">📖</div>
+        <div class="resource-body">
+          <span class="resource-category">Planners</span>
+          <h3>Tracker de Qur'an</h3>
+          <p>Suivi de lecture, mémorisation et révision du Livre.</p>
+          <button class="btn" onclick="alert('Contenu disponible prochainement')">Télécharger</button>
+        </div>
+      </article>
+
+      <!-- FICHES -->
+      <article class="resource-card" data-category="fiches">
+        <div class="resource-cover">📋</div>
+        <div class="resource-body">
+          <span class="resource-category">Fiches</span>
+          <h3>40 Hadiths An-Nawawi</h3>
+          <p>Fiches résumées avec explications et bénéfices.</p>
+          <button class="btn" onclick="alert('Contenu disponible prochainement')">Télécharger</button>
+        </div>
+      </article>
+
+      <article class="resource-card" data-category="fiches">
+        <div class="resource-cover">📝</div>
+        <div class="resource-body">
+          <span class="resource-category">Fiches</span>
+          <h3>Du'as du quotidien</h3>
+          <p>Invocations authentiques pour chaque moment de la journée.</p>
+          <button class="btn" onclick="alert('Contenu disponible prochainement')">Télécharger</button>
+        </div>
+      </article>
+
+      <article class="resource-card" data-category="fiches">
+        <div class="resource-cover">🌟</div>
+        <div class="resource-body">
+          <span class="resource-category">Fiches</span>
+          <h3>Les 99 Noms d'Allah</h3>
+          <p>Mémorisation, signification et méditation.</p>
+          <button class="btn" onclick="alert('Contenu disponible prochainement')">Télécharger</button>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
 
 <footer class="site-footer">
     <div class="footer-inner">
@@ -266,11 +566,36 @@
     <div class="footer-bottom">
       <span>© 2026 Muslimah Society — Tous droits réservés</span>
       <span class="footer-sep">•</span>
-      <a href="#" class="footer-link">Mentions légales</a>
+      <a href="legal.html" class="footer-link">Mentions légales</a>
       <span class="footer-sep">•</span>
-      <a href="#" class="footer-link">Politique de confidentialité</a>
+      <a href="privacy.html" class="footer-link">Politique de confidentialité</a>
     </div>
   </footer>
+
+  <script>
+    // FILTER FUNCTIONALITY
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const resourceCards = document.querySelectorAll('.resource-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active from all
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // Add active to clicked
+        btn.classList.add('active');
+        
+        const category = btn.dataset.category;
+        
+        resourceCards.forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+
 </body>
 </html>
-
