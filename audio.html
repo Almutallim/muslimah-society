@@ -161,19 +161,163 @@
       .footer-cols{grid-template-columns:1fr;}
     }
 
-  main.page{width:min(980px,100%); margin:0 auto; padding:32px 18px;}
-  .card{background:rgba(255,255,255,.85); border:1px solid rgba(200,182,216,.25); border-radius:26px; box-shadow:var(--shadow2); padding:18px;}
-  .muted{color:rgba(44,44,44,.68);}
-  .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;border:1px solid rgba(200,182,216,.35);text-decoration:none;font-weight:600;transition:.2s;box-shadow:var(--shadow2); cursor:pointer}
-  .btn:hover{transform:translateY(-2px); box-shadow:var(--shadow);}
-  .btn.primary{background:rgba(232,215,223,.92); color:#fff; border-color:rgba(255,255,255,.6);}
-  .btn.secondary{background:rgba(200,182,216,.92); color:#fff; border-color:rgba(255,255,255,.6);}
-  .btn.ghost{background:rgba(255,255,255,.65); color:#8f77a9;}
-  .stack{display:flex; flex-direction:column; gap:12px;}
-  .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
-  input{width:min(420px,100%); padding:12px 14px; border-radius:999px; border:1px solid rgba(200,182,216,.35); outline:none; background:rgba(255,255,255,.70);}
+    /* AUDIO STYLES */
+    .audio-header{
+      background: var(--mauve);
+      padding: 60px 18px 40px;
+      text-align: center;
+      border-bottom: 1px solid rgba(200,182,216,.25);
+    }
+    .audio-header h1{
+      font-size: clamp(32px, 4vw, 48px);
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .audio-header p{
+      color: rgba(255,255,255,.85);
+      max-width: 680px;
+      margin: 0 auto;
+    }
 
+    .audio-container{
+      width: min(1200px, 100%);
+      margin: 0 auto;
+      padding: 50px 18px;
+    }
 
+    /* FILTERS */
+    .filters{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 40px;
+      padding: 20px;
+      background: rgba(255,255,255,.60);
+      border-radius: 20px;
+      border: 1px solid rgba(200,182,216,.25);
+    }
+    .filter-btn{
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(200,182,216,.35);
+      background: rgba(255,255,255,.75);
+      color: var(--text);
+      font-weight: 500;
+      cursor: pointer;
+      transition: .25s;
+    }
+    .filter-btn:hover, .filter-btn.active{
+      background: var(--rose);
+      color: var(--text);
+      border-color: var(--rose);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow2);
+    }
+
+    /* AUDIO GRID */
+    .audio-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .audio-card{
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(200,182,216,.25);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: .3s;
+      box-shadow: var(--shadow2);
+    }
+    .audio-card:hover{
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+    .audio-card.hidden{
+      display: none;
+    }
+
+    .audio-artwork{
+      height: 180px;
+      background: var(--beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      border-bottom: 1px solid rgba(200,182,216,.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .audio-artwork::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(200,182,216,.2), transparent 70%);
+    }
+
+    .audio-body{
+      padding: 20px;
+    }
+    .audio-category{
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--rose);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .audio-card h3{
+      font-size: 18px;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .audio-meta{
+      font-size: 13px;
+      color: rgba(44,44,44,.60);
+      margin-bottom: 14px;
+    }
+    .audio-card p{
+      font-size: 14px;
+      color: rgba(44,44,44,.68);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    /* CUSTOM AUDIO PLAYER */
+    .custom-player{
+      background: var(--beige);
+      border-radius: 16px;
+      padding: 12px;
+      margin-top: 12px;
+    }
+    .custom-player audio{
+      width: 100%;
+      height: 40px;
+      border-radius: 12px;
+    }
+    audio::-webkit-media-controls-panel {
+      background: var(--cream);
+    }
+
+    .coming-soon{
+      text-align: center;
+      padding: 20px;
+      background: var(--beige);
+      border-radius: 12px;
+      color: rgba(44,44,44,.68);
+      font-style: italic;
+    }
+
+    @media (max-width: 768px){
+      .audio-grid{
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -192,42 +336,199 @@
     </nav>
   </header>
 
-<main class="page">
+  <div class="audio-header">
+    <h1>Audithèque</h1>
+    <p>Rappels, cours, podcasts et conférences pour nourrir ton âme et approfondir ta science avec douceur.</p>
+  </div>
 
-<section class="card stack">
-  <h1 style="color:var(--gold); font-family:'Playfair Display',serif;">Audithèque</h1>
-  <p class="muted">Audios protégés : accessible uniquement si abonnement actif.</p>
-  <div id="list" class="muted">Chargement…</div>
-</section>
+  <div class="audio-container">
+    
+    <!-- FILTERS -->
+    <div class="filters">
+      <button class="filter-btn active" data-category="all">Tout</button>
+      <button class="filter-btn" data-category="rappels">Rappels</button>
+      <button class="filter-btn" data-category="cours">Cours</button>
+      <button class="filter-btn" data-category="podcasts">Podcasts</button>
+      <button class="filter-btn" data-category="conferences">Conférences</button>
+      <button class="filter-btn" data-category="duas">Du'as</button>
+    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/supabaseClient.js"></script>
-<script src="js/gate.js"></script>
-<script>
-  (async () => {
-    await requireMember();
-    const { data, error } = await supabaseClient
-      .from("content_items")
-      .select("title, tier, storage_bucket, storage_path")
-      .eq("kind","audio")
-      .order("id",{ascending:false});
+    <!-- AUDIO GRID -->
+    <div class="audio-grid" id="audioGrid">
+      
+      <!-- RAPPELS -->
+      <article class="audio-card" data-category="rappels">
+        <div class="audio-artwork">🌙</div>
+        <div class="audio-body">
+          <span class="audio-category">Rappel</span>
+          <h3>La valeur du temps</h3>
+          <div class="audio-meta">⏱️ 15 min • Tazkiya</div>
+          <p>Un rappel doux sur l'importance de chaque instant et comment le consacrer à Allah.</p>
+          <div class="coming-soon">🎵 Audio disponible prochainement</div>
+        </div>
+      </article>
 
-    if(error){ document.getElementById("list").textContent = error.message; return; }
+      <article class="audio-card" data-category="rappels">
+        <div class="audio-artwork">💫</div>
+        <div class="audio-body">
+          <span class="audio-category">Rappel</span>
+          <h3>La patience face aux épreuves</h3>
+          <div class="audio-meta">⏱️ 12 min • Tazkiya</div>
+          <p>Comment transformer la difficulté en rapprochement avec Allah.</p>
+          <div class="coming-soon">🎵 Audio disponible prochainement</div>
+        </div>
+      </article>
 
-    const items = await Promise.all((data||[]).map(async (it) => {
-      const url = await signedUrl(it.storage_bucket, it.storage_path, 90);
-      return `
-        <div style="padding:12px 0; border-top:1px solid rgba(200,182,216,.22);">
-          <div><b>${it.title}</b> (${it.tier})</div>
-          <audio controls preload="none" style="width:100%; margin-top:8px" src="${url}"></audio>
-        </div>`;
-    }));
+      <article class="audio-card" data-category="rappels">
+        <div class="audio-artwork">✨</div>
+        <div class="audio-body">
+          <span class="audio-category">Rappel</span>
+          <h3>Le repentir sincère</h3>
+          <div class="audio-meta">⏱️ 18 min • Tazkiya</div>
+          <p>Les conditions de la tawba et la miséricorde infinie d'Allah.</p>
+          <div class="coming-soon">🎵 Audio disponible prochainement</div>
+        </div>
+      </article>
 
-    document.getElementById("list").innerHTML = items.join("") || "Aucun audio pour l’instant.";
-  })();
-</script>
+      <!-- COURS -->
+      <article class="audio-card" data-category="cours">
+        <div class="audio-artwork">📚</div>
+        <div class="audio-body">
+          <span class="audio-category">Cours</span>
+          <h3>Les ablutions - Fiqh Hanbalite</h3>
+          <div class="audio-meta">⏱️ 35 min • Série 1/6</div>
+          <p>Cours détaillé sur les règles des ablutions selon le madhab.</p>
+          <div class="coming-soon">🎵 Audio disponible prochainement</div>
+        </div>
+      </article>
 
-</main>
+      <article class="audio-card" data-category="cours">
+        <div class="audio-artwork">🕌</div>
+        <div class="audio-body">
+          <span class="audio-category">Cours</span>
+          <h3>La prière - Description complète</h3>
+          <div class="audio-meta">⏱️ 45 min • Série 2/6</div>
+          <p>Explication détaillée de chaque pilier et condition de la salat.</p>
+          <div class="coming-soon">🎵 Audio disponible prochainement</div>
+        </div>
+      </article>
+
+      <article class="audio-card" data-category="cours">
+        <div class="audio-artwork">📖</div>
+        <div class="audio-body">
+          <span class="audio-category">Cours</span>
+          <h3>Les 6 piliers de la foi</h3>
+          <div class="audio-meta">⏱️ 50 min • Aqidah</div>
+          <p>Fondements de la croyance islamique selon les Salafs.</p>
+          <div class="coming-soon">🎵 Audio disponible prochainement</div>
+        </div>
+      </article>
+
+      <!-- PODCASTS -->
+      <article class="audio-card" data-category="podcasts">
+        <div class="audio-artwork">🎙️</div>
+        <div class="audio-body">
+          <span class="audio-category">Podcast</span>
+          <h3>Muslimah Talk #1 - L'intention</h3>
+          <div class="audio-meta">⏱️ 28 min • Discussion</div>
+          <p>Conversations authentiques entre sœurs sur la purification de l'intention.</p>
+          <div class="coming-soon">🎵 Audio disponible prochainement</div>
+        </div>
+      </article>
+
+      <article class="audio-card" data-category="podcasts">
+        <div class="audio-artwork">💬</div>
+        <div class="audio-body">
+          <span class="audio-category">Podcast</span>
+          <h3>Muslimah Talk #2 - L'équilibre</h3>
+          <div class="audio-meta">⏱️ 32 min • Discussion</div>
+          <p>Comment concilier vie spirituelle, famille et projets personnels.</p>
+          <div class="coming-soon">🎵 Audio disponible prochainement</div>
+        </div>
+      </article>
+
+      <article class="audio-card" data-category="podcasts">
+        <div class="audio-artwork">🌸</div>
+        <div class="audio-body">
+          <span class="audio-category">Podcast</span>
+          <h3>Muslimah Talk #3 - La sororité</h3>
+          <div class="audio-meta">⏱️ 25 min • Discussion</div>
+          <p>L'importance des liens entre sœurs et comment les cultiver.</p>
+          <div class="coming-soon">🎵 Audio disponible prochainement</div>
+        </div>
+      </article>
+
+      <!-- CONFÉRENCES -->
+      <article class="audio-card" data-category="conferences">
+        <div class="audio-artwork">👥</div>
+        <div class="audio-body">
+          <span class="audio-category">Conférence</span>
+          <h3>Le Tawhid - Fondement essentiel</h3>
+          <div class="audio-meta">⏱️ 1h 10min • Aqidah</div>
+          <p>Conférence approfondie sur l'unicité d'Allah.</p>
+          <div class="coming-soon">🎵 Audio disponible prochainement</div>
+        </div>
+      </article>
+
+      <article class="audio-card" data-category="conferences">
+        <div class="audio-artwork">🎓</div>
+        <div class="audio-body">
+          <span class="audio-category">Conférence</span>
+          <h3>La femme en Islam - Droits et dignité</h3>
+          <div class="audio-meta">⏱️ 55 min • Fiqh</div>
+          <p>Vision islamique authentique du statut de la femme.</p>
+          <div class="coming-soon">🎵 Audio disponible prochainement</div>
+        </div>
+      </article>
+
+      <!-- DU'AS -->
+      <article class="audio-card" data-category="duas">
+        <div class="audio-artwork">🤲</div>
+        <div class="audio-body">
+          <span class="audio-category">Du'as</span>
+          <h3>Invocations du matin</h3>
+          <div class="audio-meta">⏱️ 10 min • Adhkar</div>
+          <p>Lecture douce des invocations authentiques du matin.</p>
+          <div class="coming-soon">🎵 Audio disponible prochainement</div>
+        </div>
+      </article>
+
+      <article class="audio-card" data-category="duas">
+        <div class="audio-artwork">🌙</div>
+        <div class="audio-body">
+          <span class="audio-category">Du'as</span>
+          <h3>Invocations du soir</h3>
+          <div class="audio-meta">⏱️ 12 min • Adhkar</div>
+          <p>Lecture apaisante des invocations du soir.</p>
+          <div class="coming-soon">🎵 Audio disponible prochainement</div>
+        </div>
+      </article>
+
+      <article class="audio-card" data-category="duas">
+        <div class="audio-artwork">🕊️</div>
+        <div class="audio-body">
+          <span class="audio-category">Du'as</span>
+          <h3>Du'as pour l'anxiété</h3>
+          <div class="audio-meta">⏱️ 8 min • Adhkar</div>
+          <p>Invocations prophétiques contre l'angoisse et le stress.</p>
+          <div class="coming-soon">🎵 Audio disponible prochainement</div>
+        </div>
+      </article>
+
+      <article class="audio-card" data-category="duas">
+        <div class="audio-artwork">💝</div>
+        <div class="audio-body">
+          <span class="audio-category">Du'as</span>
+          <h3>Du'as de protection</h3>
+          <div class="audio-meta">⏱️ 15 min • Adhkar</div>
+          <p>Invocations de protection contre le mauvais œil et la jalousie.</p>
+          <div class="coming-soon">🎵 Audio disponible prochainement</div>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
 
 <footer class="site-footer">
     <div class="footer-inner">
@@ -265,11 +566,34 @@
     <div class="footer-bottom">
       <span>© 2026 Muslimah Society — Tous droits réservés</span>
       <span class="footer-sep">•</span>
-      <a href="#" class="footer-link">Mentions légales</a>
+      <a href="legal.html" class="footer-link">Mentions légales</a>
       <span class="footer-sep">•</span>
-      <a href="#" class="footer-link">Politique de confidentialité</a>
+      <a href="privacy.html" class="footer-link">Politique de confidentialité</a>
     </div>
   </footer>
+
+  <script>
+    // FILTER FUNCTIONALITY
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const audioCards = document.querySelectorAll('.audio-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const category = btn.dataset.category;
+        
+        audioCards.forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+
 </body>
 </html>
-
