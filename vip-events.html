@@ -161,19 +161,214 @@
       .footer-cols{grid-template-columns:1fr;}
     }
 
-  main.page{width:min(980px,100%); margin:0 auto; padding:32px 18px;}
-  .card{background:rgba(255,255,255,.85); border:1px solid rgba(200,182,216,.25); border-radius:26px; box-shadow:var(--shadow2); padding:18px;}
-  .muted{color:rgba(44,44,44,.68);}
-  .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;border:1px solid rgba(200,182,216,.35);text-decoration:none;font-weight:600;transition:.2s;box-shadow:var(--shadow2); cursor:pointer}
-  .btn:hover{transform:translateY(-2px); box-shadow:var(--shadow);}
-  .btn.primary{background:rgba(232,215,223,.92); color:#fff; border-color:rgba(255,255,255,.6);}
-  .btn.secondary{background:rgba(200,182,216,.92); color:#fff; border-color:rgba(255,255,255,.6);}
-  .btn.ghost{background:rgba(255,255,255,.65); color:#8f77a9;}
-  .stack{display:flex; flex-direction:column; gap:12px;}
-  .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
-  input{width:min(420px,100%); padding:12px 14px; border-radius:999px; border:1px solid rgba(200,182,216,.35); outline:none; background:rgba(255,255,255,.70);}
+    /* EVENTS STYLES */
+    .events-header{
+      background: var(--beige);
+      padding: 60px 18px 40px;
+      text-align: center;
+      border-bottom: 1px solid rgba(200,182,216,.25);
+    }
+    .events-header h1{
+      font-size: clamp(32px, 4vw, 48px);
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .events-header .subtitle-ar{
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--mauve);
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .events-header p{
+      color: rgba(44,44,44,.72);
+      max-width: 680px;
+      margin: 0 auto;
+    }
 
+    .events-container{
+      width: min(1100px, 100%);
+      margin: 0 auto;
+      padding: 60px 18px;
+    }
 
+    /* COMING SOON SECTION */
+    .coming-soon-section{
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(200,182,216,.25);
+      border-radius: var(--radius);
+      padding: 60px 40px;
+      text-align: center;
+      box-shadow: var(--shadow2);
+      margin-bottom: 60px;
+    }
+    .coming-soon-section .icon{
+      font-size: 5rem;
+      margin-bottom: 20px;
+      opacity: .7;
+    }
+    .coming-soon-section h2{
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .coming-soon-section p{
+      font-size: 1.1rem;
+      color: rgba(44,44,44,.72);
+      max-width: 600px;
+      margin: 0 auto 30px;
+      line-height: 1.8;
+    }
+
+    /* NOTIFY FORM */
+    .notify-form{
+      max-width: 500px;
+      margin: 30px auto;
+      padding: 30px;
+      background: var(--beige);
+      border-radius: 20px;
+      border: 1px solid rgba(200,182,216,.25);
+    }
+    .notify-form h3{
+      font-size: 1.4rem;
+      color: var(--mauve);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .notify-form p{
+      text-align: center;
+      color: rgba(44,44,44,.68);
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+    .notify-form input{
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(200,182,216,.35);
+      background: rgba(255,255,255,.75);
+      margin-bottom: 12px;
+      font-size: 15px;
+      outline: none;
+    }
+    .notify-form button{
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 999px;
+      border: none;
+      background: var(--mauve);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: .25s;
+      font-size: 15px;
+    }
+    .notify-form button:hover{
+      background: var(--rose);
+      color: var(--text);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow2);
+    }
+
+    /* PREVIEW SECTION */
+    .preview-section{
+      margin-top: 60px;
+    }
+    .preview-section h2{
+      text-align: center;
+      font-size: 2.2rem;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .preview-section .lead{
+      text-align: center;
+      color: rgba(44,44,44,.68);
+      max-width: 700px;
+      margin: 0 auto 50px;
+    }
+
+    .preview-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .preview-card{
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(200,182,216,.25);
+      border-radius: var(--radius);
+      padding: 35px 28px;
+      text-align: center;
+      box-shadow: var(--shadow2);
+      transition: .3s;
+    }
+    .preview-card:hover{
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+    }
+    .preview-card .icon{
+      font-size: 3.5rem;
+      margin-bottom: 18px;
+      display: block;
+    }
+    .preview-card h3{
+      font-size: 1.6rem;
+      color: var(--mauve);
+      margin-bottom: 12px;
+    }
+    .preview-card p{
+      color: rgba(44,44,44,.70);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    /* WHAT TO EXPECT */
+    .expectations{
+      margin-top: 60px;
+      padding: 50px 30px;
+      background: var(--rose);
+      border-radius: var(--radius);
+      border: 1px solid rgba(200,182,216,.25);
+    }
+    .expectations h2{
+      text-align: center;
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 40px;
+    }
+    .expectations-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+    .expectation-item{
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .expectation-item .icon{
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+    .expectation-item div h4{
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .expectation-item div p{
+      color: rgba(44,44,44,.68);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px){
+      .preview-grid{
+        grid-template-columns: 1fr;
+      }
+      .expectations-grid{
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -192,30 +387,143 @@
     </nav>
   </header>
 
-<main class="page">
-
-<section class="card stack">
-  <h1 style="color:var(--gold); font-family:'Playfair Display',serif;">Soirées VIP</h1>
-  <p class="muted">Accès réservé aux VIP (abonnement actif).</p>
-
-  <ul class="muted" style="padding-left:18px">
-    <li>Invitations privées (à remplir)</li>
-    <li>Calendrier des soirées (à remplir)</li>
-    <li>Galerie photos (à venir)</li>
-  </ul>
-
-  <div class="row">
-    <a class="btn secondary" href="pricing.html">Passer VIP</a>
-    <a class="btn ghost" href="dashboard.html">Espace membre</a>
+  <div class="events-header">
+    <h1>Les Soirées d'Al Muta'allim</h1>
+    <p class="subtitle-ar">مجالس العلم والتربية</p>
+    <p>Rencontres intimes, élégantes et spirituelles pour femmes musulmanes à Alger.</p>
   </div>
-</section>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/supabaseClient.js"></script>
-<script src="js/gate.js"></script>
-<script>requireVIP();</script>
+  <div class="events-container">
+    
+    <!-- COMING SOON -->
+    <div class="coming-soon-section">
+      <div class="icon">🌸</div>
+      <h2>Bientôt disponible</h2>
+      <p>
+        Nos soirées VIP exclusives sont en préparation. Des rencontres raffinées où science islamique, 
+        élégance et sororité se rejoignent dans une ambiance inspirée du 19ème siècle.
+      </p>
+      <p style="margin-top: 20px; font-style: italic; color: rgba(44,44,44,.60);">
+        Première soirée prévue : Printemps 2026 insha'Allah
+      </p>
 
-</main>
+      <!-- NOTIFY FORM -->
+      <div class="notify-form">
+        <h3>Rejoindre la liste d'attente</h3>
+        <p>Sois la première informée de nos événements exclusifs</p>
+        <form onsubmit="event.preventDefault(); alert('Merci ! Tu seras notifiée dès le lancement 🌸');">
+          <input type="text" placeholder="Ton prénom" required>
+          <input type="email" placeholder="Ton email" required>
+          <button type="submit">M'inscrire à la liste VIP</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="preview-section">
+      <h2>Ce qui t'attend</h2>
+      <p class="lead">
+        Des soirées pensées pour les femmes musulmanes en quête d'élévation spirituelle et de raffinement.
+      </p>
+
+      <div class="preview-grid">
+        
+        <article class="preview-card">
+          <span class="icon">🎭</span>
+          <h3>Cercles de science</h3>
+          <p>Fiqh, Aqidah, Tazkiya enseignés avec douceur et profondeur par des enseignantes qualifiées.</p>
+        </article>
+
+        <article class="preview-card">
+          <span class="icon">☕</span>
+          <h3>Thé raffiné</h3>
+          <p>Service élégant avec thés premium, pâtisseries fines et délicatesses orientales dans un décor soigné.</p>
+        </article>
+
+        <article class="preview-card">
+          <span class="icon">👗</span>
+          <h3>Dress code chic</h3>
+          <p>Hijab élégant, abayas sophistiquées — célébrons la beauté musulmane avec noblesse et pudeur.</p>
+        </article>
+
+        <article class="preview-card">
+          <span class="icon">🤝</span>
+          <h3>Sororité authentique</h3>
+          <p>Rencontre des sœurs partageant les mêmes valeurs dans une atmosphère bienveillante et inspirante.</p>
+        </article>
+
+        <article class="preview-card">
+          <span class="icon">📚</span>
+          <h3>Ateliers pratiques</h3>
+          <p>Mémorisation du Qur'an, purification du cœur, organisation spirituelle — des outils concrets.</p>
+        </article>
+
+        <article class="preview-card">
+          <span class="icon">🕊️</span>
+          <h3>Ambiance sereine</h3>
+          <p>Décor inspiré des salons aristocratiques avec touches orientales, musique apaisante, lumières tamisées.</p>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- WHAT TO EXPECT -->
+    <div class="expectations">
+      <h2>À quoi s'attendre ?</h2>
+      <div class="expectations-grid">
+        
+        <div class="expectation-item">
+          <span class="icon">📍</span>
+          <div>
+            <h4>Lieu exclusif à Alger</h4>
+            <p>Salon privé élégant dans un quartier calme et accessible</p>
+          </div>
+        </div>
+
+        <div class="expectation-item">
+          <span class="icon">👥</span>
+          <div>
+            <h4>Groupes intimistes</h4>
+            <p>Maximum 20-25 sœurs pour favoriser proximité et échanges</p>
+          </div>
+        </div>
+
+        <div class="expectation-item">
+          <span class="icon">⏰</span>
+          <div>
+            <h4>Soirées mensuelles</h4>
+            <p>Un rendez-vous régulier pour cultiver la constance</p>
+          </div>
+        </div>
+
+        <div class="expectation-item">
+          <span class="icon">🎟️</span>
+          <div>
+            <h4>Sur inscription</h4>
+            <p>Places limitées, réservation obligatoire pour garantir la qualité</p>
+          </div>
+        </div>
+
+        <div class="expectation-item">
+          <span class="icon">💎</span>
+          <div>
+            <h4>Tarif accessible</h4>
+            <p>Contribution modeste pour couvrir les frais (thé, lieu, matériel)</p>
+          </div>
+        </div>
+
+        <div class="expectation-item">
+          <span class="icon">📖</span>
+          <div>
+            <h4>Contenu authentique</h4>
+            <p>Enseignement selon Qur'an, Sunnah et méthodologie des Salafs</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 
 <footer class="site-footer">
     <div class="footer-inner">
@@ -253,10 +561,11 @@
     <div class="footer-bottom">
       <span>© 2026 Muslimah Society — Tous droits réservés</span>
       <span class="footer-sep">•</span>
-      <a href="#" class="footer-link">Mentions légales</a>
+      <a href="legal.html" class="footer-link">Mentions légales</a>
       <span class="footer-sep">•</span>
-      <a href="#" class="footer-link">Politique de confidentialité</a>
+      <a href="privacy.html" class="footer-link">Politique de confidentialité</a>
     </div>
   </footer>
+
 </body>
 </html>
