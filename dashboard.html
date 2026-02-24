@@ -161,19 +161,168 @@
       .footer-cols{grid-template-columns:1fr;}
     }
 
-  main.page{width:min(980px,100%); margin:0 auto; padding:32px 18px;}
-  .card{background:rgba(255,255,255,.85); border:1px solid rgba(200,182,216,.25); border-radius:26px; box-shadow:var(--shadow2); padding:18px;}
-  .muted{color:rgba(44,44,44,.68);}
-  .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;border:1px solid rgba(200,182,216,.35);text-decoration:none;font-weight:600;transition:.2s;box-shadow:var(--shadow2); cursor:pointer}
-  .btn:hover{transform:translateY(-2px); box-shadow:var(--shadow);}
-  .btn.primary{background:rgba(232,215,223,.92); color:#fff; border-color:rgba(255,255,255,.6);}
-  .btn.secondary{background:rgba(200,182,216,.92); color:#fff; border-color:rgba(255,255,255,.6);}
-  .btn.ghost{background:rgba(255,255,255,.65); color:#8f77a9;}
-  .stack{display:flex; flex-direction:column; gap:12px;}
-  .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
-  input{width:min(420px,100%); padding:12px 14px; border-radius:999px; border:1px solid rgba(200,182,216,.35); outline:none; background:rgba(255,255,255,.70);}
+    /* DASHBOARD STYLES */
+    .dashboard-header{
+      background: var(--beige);
+      padding: 50px 18px 30px;
+      border-bottom: 1px solid rgba(200,182,216,.25);
+    }
+    .dashboard-header .container{
+      width: min(1100px, 100%);
+      margin: 0 auto;
+    }
+    .dashboard-header h1{
+      font-size: clamp(28px, 3.5vw, 42px);
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .dashboard-header .welcome{
+      color: rgba(44,44,44,.72);
+      font-size: 1rem;
+    }
 
+    .dashboard-container{
+      width: min(1100px, 100%);
+      margin: 40px auto;
+      padding: 0 18px;
+    }
 
+    /* STATUS CARD */
+    .status-card{
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(200,182,216,.25);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow2);
+      margin-bottom: 40px;
+    }
+    .status-card h2{
+      font-size: 1.6rem;
+      color: var(--mauve);
+      margin-bottom: 16px;
+    }
+    .status-info{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .status-item{
+      padding: 16px;
+      background: var(--rose);
+      border-radius: 16px;
+      border: 1px solid rgba(200,182,216,.25);
+    }
+    .status-item .label{
+      font-size: 0.85rem;
+      color: rgba(44,44,44,.60);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      font-weight: 600;
+    }
+    .status-item .value{
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    /* QUICK LINKS */
+    .quick-links{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .quick-link{
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(200,182,216,.25);
+      border-radius: var(--radius);
+      padding: 28px;
+      text-align: center;
+      text-decoration: none;
+      transition: .3s;
+      box-shadow: var(--shadow2);
+    }
+    .quick-link:hover{
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+    }
+    .quick-link .icon{
+      font-size: 3rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .quick-link h3{
+      font-size: 1.3rem;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .quick-link p{
+      font-size: 0.9rem;
+      color: rgba(44,44,44,.65);
+    }
+
+    /* ACTIONS */
+    .actions{
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(200,182,216,.25);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow2);
+    }
+    .actions h2{
+      font-size: 1.6rem;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .actions-grid{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      border: 1px solid rgba(200,182,216,.35);
+      background: var(--mauve);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: .25s;
+      cursor: pointer;
+    }
+    .btn:hover{
+      background: var(--rose);
+      color: var(--text);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow2);
+    }
+    .btn.secondary{
+      background: rgba(255,255,255,.75);
+      color: var(--text);
+    }
+    .btn.danger{
+      background: rgba(255,255,255,.75);
+      color: #d64545;
+      border-color: rgba(214,69,69,.25);
+    }
+    .btn.danger:hover{
+      background: #d64545;
+      color: #fff;
+    }
+
+    @media (max-width: 768px){
+      .status-info{
+        grid-template-columns: 1fr;
+      }
+      .quick-links{
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -192,39 +341,74 @@
     </nav>
   </header>
 
-<main class="page">
-
-<section class="card stack">
-  <h1 style="color:var(--gold); font-family:'Playfair Display',serif;">Votre espace membre</h1>
-  <p class="muted">Statut d’abonnement + accès rapide.</p>
-  <div id="status" class="muted">Chargement…</div>
-
-  <div class="row">
-    <a class="btn primary" href="library.html">Bibliothèque</a>
-    <a class="btn secondary" href="audio.html">Audithèque</a>
-    <a class="btn ghost" href="vip-events.html">Soirées VIP</a>
-    <a class="btn ghost" href="pricing.html">Abonnements</a>
+  <div class="dashboard-header">
+    <div class="container">
+      <h1>Bienvenue, <span id="userName">Chargement...</span> 🌸</h1>
+      <p class="welcome">Ton espace personnel pour accéder à tout le contenu Muslimah Society</p>
+    </div>
   </div>
 
-  <button class="btn ghost" id="logout" type="button">Déconnexion</button>
-</section>
+  <div class="dashboard-container">
+    
+    <!-- STATUS -->
+    <div class="status-card">
+      <h2>Ton abonnement</h2>
+      <div class="status-info">
+        <div class="status-item">
+          <div class="label">Statut</div>
+          <div class="value" id="status">Chargement...</div>
+        </div>
+        <div class="status-item">
+          <div class="label">Formule</div>
+          <div class="value" id="tier">Chargement...</div>
+        </div>
+        <div class="status-item">
+          <div class="label">Membre depuis</div>
+          <div class="value" id="memberSince">2026</div>
+        </div>
+      </div>
+    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/supabaseClient.js"></script>
-<script src="js/auth.js"></script>
-<script src="js/gate.js"></script>
-<script>
-  (async () => {
-    await requireAuth();
-    const p = await getProfile();
-    document.getElementById("status").innerHTML =
-      p ? `Statut : <b>${p.subscription_status}</b> — Niveau : <b>${p.subscription_tier}</b>` : "Profil introuvable";
-  })();
+    <!-- QUICK LINKS -->
+    <div class="quick-links">
+      
+      <a href="library.html" class="quick-link">
+        <span class="icon">📚</span>
+        <h3>Bibliothèque</h3>
+        <p>PDFs, planners et ressources</p>
+      </a>
 
-  document.getElementById("logout").addEventListener("click", logout);
-</script>
+      <a href="audio.html" class="quick-link">
+        <span class="icon">🎵</span>
+        <h3>Audithèque</h3>
+        <p>Rappels, cours et podcasts</p>
+      </a>
 
-</main>
+      <a href="vip-events.html" class="quick-link">
+        <span class="icon">🎭</span>
+        <h3>Soirées VIP</h3>
+        <p>Événements exclusifs</p>
+      </a>
+
+      <a href="pricing.html" class="quick-link">
+        <span class="icon">💎</span>
+        <h3>Abonnements</h3>
+        <p>Voir les formules</p>
+      </a>
+
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="actions">
+      <h2>Actions</h2>
+      <div class="actions-grid">
+        <a href="pricing.html" class="btn">📈 Améliorer mon abonnement</a>
+        <a href="index.html#newsletter" class="btn secondary">📧 Newsletter</a>
+        <button id="logoutBtn" class="btn danger">🚪 Déconnexion</button>
+      </div>
+    </div>
+
+  </div>
 
 <footer class="site-footer">
     <div class="footer-inner">
@@ -262,11 +446,47 @@
     <div class="footer-bottom">
       <span>© 2026 Muslimah Society — Tous droits réservés</span>
       <span class="footer-sep">•</span>
-      <a href="#" class="footer-link">Mentions légales</a>
+      <a href="legal.html" class="footer-link">Mentions légales</a>
       <span class="footer-sep">•</span>
-      <a href="#" class="footer-link">Politique de confidentialité</a>
+      <a href="privacy.html" class="footer-link">Politique de confidentialité</a>
     </div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/gate.js"></script>
+  <script>
+    (async () => {
+      await requireAuth();
+      const profile = await getProfile();
+      
+      if(profile){
+        document.getElementById("userName").textContent = profile.full_name || "Membre";
+        document.getElementById("status").textContent = profile.subscription_status || "Actif";
+        document.getElementById("tier").textContent = profile.subscription_tier || "Gratuit";
+      }else{
+        document.getElementById("userName").textContent = "Membre";
+        document.getElementById("status").textContent = "Non défini";
+        document.getElementById("tier").textContent = "Gratuit";
+      }
+    })();
+
+    // Fonction logout directe
+    document.getElementById("logoutBtn").addEventListener("click", async () => {
+      try {
+        if(typeof logout === 'function'){
+          await logout();
+        } else if(typeof supabaseClient !== 'undefined'){
+          await supabaseClient.auth.signOut();
+        }
+        window.location.href = "login.html";
+      } catch(err) {
+        console.error(err);
+        window.location.href = "login.html";
+      }
+    });
+  </script>
+
 </body>
 </html>
-
