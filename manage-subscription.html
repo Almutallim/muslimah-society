@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Gérer mon abonnement — Muslimah Society</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+:root{--rose:#E8D7DF;--mauve:#C8B6D8;--beige:#F5EFE8;--cream:#FCFAF8;--gold:#C6A86B;--text:#2C2C2C;--shadow: 0 18px 45px rgba(0,0,0,.08);--shadow2: 0 10px 30px rgba(0,0,0,.06);--radius: 26px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;padding-top:90px}
+h1,h2,h3{font-family:'Playfair Display',serif}
+.navbar{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(200,182,216,.35);z-index:999}
+.logo{font-family:'Playfair Display',serif;font-size:22px;letter-spacing:.2px;color:var(--gold);display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-badge{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #fff, var(--beige));border:1px solid rgba(198,168,107,.35);box-shadow:0 8px 20px rgba(0,0,0,.06);position:relative}
+.logo-badge::after{content:"";position:absolute;inset:8px;border-radius:50%;border:1px dashed rgba(198,168,107,.55)}
+.container{max-width:900px;margin:0 auto;padding:40px 20px}
+.header{text-align:center;margin-bottom:40px}
+.header h1{font-size:clamp(32px, 4vw, 48px);color:var(--gold);margin-bottom:12px}
+.card{background:rgba(255,255,255,.90);border:2px solid rgba(200,182,216,.30);border-radius:var(--radius);padding:30px;margin-bottom:25px;box-shadow:var(--shadow2)}
+.subscription-info{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:30px}
+.info-item{padding:20px;background:var(--beige);border-radius:16px}
+.info-label{font-size:12px;color:rgba(44,44,44,.65);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:600}
+.info-value{font-size:20px;color:var(--gold);font-weight:700}
+.btn{display:inline-block;padding:14px 28px;border-radius:999px;border:2px solid;text-decoration:none;font-weight:600;transition:.3s;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:14px;text-align:center}
+.btn.primary{background:var(--mauve);color:#fff;border-color:var(--mauve)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.btn.secondary{background:transparent;color:var(--mauve);border-color:var(--mauve)}
+.btn.secondary:hover{background:var(--mauve);color:#fff}
+.btn.danger{background:transparent;color:#f44336;border-color:#f44336}
+.btn.danger:hover{background:#f44336;color:#fff}
+.actions{display:flex;gap:15px;flex-wrap:wrap;margin-top:25px}
+  </style>
+</head>
+<body>
+<header class="navbar">
+<a class="logo" href="index.html"><span class="logo-badge"></span>Muslimah Society</a>
+</header>
+<div class="container">
+<div class="header">
+<h1>Gérer mon abonnement</h1>
+<p>Consulte et modifie ton abonnement</p>
+</div>
+<div id="subscriptionContent" class="card">
+<p>Chargement...</p>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabaseClient.js"></script>
+<script src="js/auth.js"></script>
+<script>
+async function loadSubscription(){
+try{
+const {data:{session}}=await supabaseClient.auth.getSession();
+if(!session){window.location.href='login.html';return}
+const {data:profile}=await supabaseClient.from('profiles').select('*').eq('id',session.user.id).single();
+const tier=profile.subscription_tier||'free';
+const status=profile.subscription_status||'inactive';
+document.getElementById('subscriptionContent').innerHTML=`
+<h2 style="color:var(--gold);margin-bottom:20px">Mon abonnement</h2>
+<div class="subscription-info">
+<div class="info-item">
+<div class="info-label">Formule</div>
+<div class="info-value">${tier==='free'?'🌱 Gratuit':tier==='member'?'🌸 Member':'👑 VIP'}</div>
+</div>
+<div class="info-item">
+<div class="info-label">Statut</div>
+<div class="info-value">${status==='active'?'✅ Actif':'⏸ Inactif'}</div>
+</div>
+</div>
+<div class="actions">
+${tier==='free'?'<a href="pricing.html" class="btn primary">Voir les abonnements</a>':''}
+${tier==='member'?'<a href="upgrade.html" class="btn primary">Passer à VIP</a>':''}
+<a href="dashboard.html" class="btn secondary">Retour</a>
+</div>
+`;
+}catch(e){console.error(e)}
+}
+loadSubscription();
+</script>
+</body>
+</html>

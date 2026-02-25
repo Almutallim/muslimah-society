@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Gérer Utilisateurs — Muslimah Society Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--rose:#E8D7DF;--mauve:#C8B6D8;--beige:#F5EFE8;--cream:#FCFAF8;--gold:#C6A86B;--text:#2C2C2C;--shadow: 0 18px 45px rgba(0,0,0,.08);--shadow2: 0 10px 30px rgba(0,0,0,.06);--radius: 26px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;padding-top:90px}
+h1,h2,h3{font-family:'Playfair Display',serif}
+.navbar{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(200,182,216,.35);z-index:999}
+.logo{font-family:'Playfair Display',serif;font-size:22px;letter-spacing:.2px;color:var(--gold);display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-badge{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #fff, var(--beige));border:1px solid rgba(198,168,107,.35);box-shadow:0 8px 20px rgba(0,0,0,.06);position:relative}
+.logo-badge::after{content:"";position:absolute;inset:8px;border-radius:50%;border:1px dashed rgba(198,168,107,.55)}
+.container{max-width:1200px;margin:0 auto;padding:40px 20px}
+.header{text-align:center;margin-bottom:40px}
+.header h1{font-size:clamp(32px, 4vw, 48px);color:var(--gold);margin-bottom:12px}
+.filters{background:rgba(255,255,255,.90);border:2px solid rgba(200,182,216,.30);border-radius:20px;padding:20px;margin-bottom:25px;display:flex;gap:15px;flex-wrap:wrap}
+.filter-input{padding:12px;border-radius:12px;border:2px solid rgba(200,182,216,.30);background:rgba(255,255,255,.90);font-size:14px;font-family:'Montserrat',sans-serif}
+.users-table{background:rgba(255,255,255,.90);border:2px solid rgba(200,182,216,.30);border-radius:20px;overflow:hidden;box-shadow:var(--shadow2)}
+table{width:100%;border-collapse:collapse}
+th{background:var(--mauve);color:#fff;padding:15px;text-align:left;font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:1px}
+td{padding:15px;border-bottom:1px solid rgba(200,182,216,.20)}
+tr:hover{background:var(--beige)}
+.badge{display:inline-block;padding:4px 12px;border-radius:999px;font-size:11px;font-weight:600;text-transform:uppercase}
+.badge.member{background:rgba(232,215,223,.60);color:var(--text)}
+.badge.vip{background:var(--gold);color:#fff}
+.badge.free{background:rgba(200,182,216,.30);color:var(--text)}
+.badge.active{background:#4caf50;color:#fff}
+.badge.inactive{background:#f44336;color:#fff}
+</style>
+</head>
+<body>
+<header class="navbar">
+<a class="logo" href="index.html"><span class="logo-badge"></span>Muslimah Society</a>
+</header>
+<div class="container">
+<div class="header">
+<h1>👥 Gérer les Utilisateurs</h1>
+<p>Liste complète des membres</p>
+</div>
+<div class="filters">
+<input type="text" id="searchInput" class="filter-input" placeholder="Rechercher par nom ou email..." style="flex:1;min-width:250px">
+<select id="tierFilter" class="filter-input">
+<option value="">Toutes les formules</option>
+<option value="free">Gratuit</option>
+<option value="member">Member</option>
+<option value="vip">VIP</option>
+</select>
+<select id="statusFilter" class="filter-input">
+<option value="">Tous les statuts</option>
+<option value="active">Actif</option>
+<option value="inactive">Inactif</option>
+</select>
+</div>
+<div class="users-table">
+<table id="usersTable">
+<thead>
+<tr>
+<th>Nom</th>
+<th>Email</th>
+<th>Formule</th>
+<th>Statut</th>
+<th>Inscription</th>
+</tr>
+</thead>
+<tbody id="usersBody">
+<tr><td colspan="5" style="text-align:center;padding:40px">Chargement...</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabaseClient.js"></script>
+<script src="js/gate-admin.js"></script>
+<script>
+requireAdmin();
+let allUsers=[];
+async function loadUsers(){
+try{
+const {data:profiles}=await supabaseClient.from('profiles').select('*').order('created_at',{ascending:false});
+allUsers=profiles||[];
+renderUsers(allUsers);
+}catch(e){console.error(e)}
+}
+function renderUsers(users){
+const tbody=document.getElementById('usersBody');
+if(!users||users.length===0){
+tbody.innerHTML='<tr><td colspan="5" style="text-align:center;padding:40px">Aucun utilisateur</td></tr>';
+return;
+}
+tbody.innerHTML=users.map(u=>`
+<tr>
+<td><strong>${u.full_name||'—'}</strong></td>
+<td>${u.email||'—'}</td>
+<td><span class="badge ${u.subscription_tier||'free'}">${u.subscription_tier==='member'?'Member':u.subscription_tier==='vip'?'VIP':'Gratuit'}</span></td>
+<td><span class="badge ${u.subscription_status==='active'?'active':'inactive'}">${u.subscription_status==='active'?'Actif':'Inactif'}</span></td>
+<td>${new Date(u.created_at).toLocaleDateString('fr-FR')}</td>
+</tr>
+`).join('');
+}
+document.getElementById('searchInput').addEventListener('input',filterUsers);
+document.getElementById('tierFilter').addEventListener('change',filterUsers);
+document.getElementById('statusFilter').addEventListener('change',filterUsers);
+function filterUsers(){
+const search=document.getElementById('searchInput').value.toLowerCase();
+const tier=document.getElementById('tierFilter').value;
+const status=document.getElementById('statusFilter').value;
+const filtered=allUsers.filter(u=>{
+const matchSearch=!search||u.full_name?.toLowerCase().includes(search)||u.email?.toLowerCase().includes(search);
+const matchTier=!tier||u.subscription_tier===tier;
+const matchStatus=!status||u.subscription_status===status;
+return matchSearch&&matchTier&&matchStatus;
+});
+renderUsers(filtered);
+}
+loadUsers();
+</script>
+</body>
+</html>
