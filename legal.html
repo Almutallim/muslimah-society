@@ -1,34 +1,231 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Mentions légales — Muslimah Society</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mentions Légales — Muslimah Society</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+:root{
+      --rose:#E8D7DF;
+      --mauve:#C8B6D8;
+      --beige:#F5EFE8;
+      --cream:#FCFAF8;
+      --gold:#C6A86B;
+      --text:#2C2C2C;
+      --shadow: 0 18px 45px rgba(0,0,0,.08);
+      --shadow2: 0 10px 30px rgba(0,0,0,.06);
+      --radius: 26px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:'Montserrat',sans-serif;
+      background:var(--cream);
+      color:var(--text);
+      line-height:1.7;
+      padding-top:90px;
+    }
+    h1,h2,h3{font-family:'Playfair Display',serif}
+    
+    .navbar{
+      position:fixed; top:0; left:0; right:0;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:18px 28px;
+      background:rgba(255,255,255,.78);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(200,182,216,.35);
+      z-index:999;
+    }
+    .logo{
+      font-family:'Playfair Display',serif;
+      font-size:22px;
+      letter-spacing:.2px;
+      color:var(--gold);
+      display:flex; align-items:center; gap:10px;
+      text-decoration:none;
+    }
+    .logo-badge{
+      width:34px;height:34px;border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--beige));
+      border: 1px solid rgba(198,168,107,.35);
+      box-shadow: 0 8px 20px rgba(0,0,0,.06);
+      position:relative;
+    }
+    .logo-badge::after{
+      content:"";
+      position:absolute; inset:8px;
+      border-radius:50%;
+      border: 1px dashed rgba(198,168,107,.55);
+      opacity:.9;
+    }
+
+    .container{
+      max-width:900px;
+      margin:0 auto;
+      padding:40px 20px;
+    }
+
+    .legal-header{
+      text-align:center;
+      padding:40px 20px;
+      background: linear-gradient(135deg, var(--rose), var(--mauve));
+      margin:-40px -20px 40px;
+      border-radius:0 0 30px 30px;
+    }
+    .legal-header h1{
+      font-size:clamp(32px, 4vw, 48px);
+      color:#fff;
+      margin-bottom:10px;
+    }
+    .legal-header p{
+      color:rgba(255,255,255,.90);
+      font-size:16px;
+    }
+
+    .legal-content{
+      background:rgba(255,255,255,.85);
+      border:1px solid rgba(200,182,216,.25);
+      border-radius:var(--radius);
+      padding:40px;
+      box-shadow:var(--shadow2);
+    }
+
+    .legal-content h2{
+      font-size:28px;
+      color:var(--gold);
+      margin:30px 0 15px;
+      padding-bottom:10px;
+      border-bottom:2px solid var(--beige);
+    }
+    .legal-content h2:first-child{
+      margin-top:0;
+    }
+
+    .legal-content h3{
+      font-size:20px;
+      color:var(--mauve);
+      margin:20px 0 10px;
+    }
+
+    .legal-content p{
+      margin-bottom:15px;
+      color:rgba(44,44,44,.75);
+    }
+
+    .legal-content ul{
+      margin:15px 0 15px 25px;
+      color:rgba(44,44,44,.75);
+    }
+    .legal-content li{
+      margin-bottom:8px;
+    }
+
+    .highlight{
+      background:var(--beige);
+      padding:20px;
+      border-radius:16px;
+      margin:20px 0;
+      border-left:4px solid var(--gold);
+    }
+
+    .back-link{
+      display:inline-block;
+      margin-top:30px;
+      padding:12px 24px;
+      background:var(--mauve);
+      color:#fff;
+      text-decoration:none;
+      border-radius:999px;
+      font-weight:600;
+      transition:.3s;
+    }
+    .back-link:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow2);
+    }
+
+    @media (max-width:768px){
+      .legal-content{padding:25px;}
+    }
+  </style>
 </head>
 <body>
 
-<h1>Mentions légales</h1>
+<header class="navbar">
+    <a class="logo" href="index.html"><span class="logo-badge"></span>Muslimah Society</a>
+  </header>
 
-<p>
-Le site Muslimah Society est édité par :
-</p>
+  <div class="container">
+    <div class="legal-header">
+      <h1>Mentions Légales</h1>
+      <p>Informations légales concernant Muslimah Society</p>
+    </div>
 
-<p>
-Muslimah Society<br>
-Fondatrice : Zina Soifi<br>
-Email : contact@muslimah-society.com
-</p>
+    <div class="legal-content">
+      
+      <h2>1. Éditeur du site</h2>
+      <p><strong>Raison sociale :</strong> [NOM DE TON ENTREPRISE/ASSOCIATION]</p>
+      <p><strong>Forme juridique :</strong> [Auto-entrepreneur / SARL / Association / Autre]</p>
+      <p><strong>Siège social :</strong> [ADRESSE COMPLÈTE], Alger, Algérie</p>
+      <p><strong>Email :</strong> hello@muslimahsociety.com</p>
+      <p><strong>Directrice de publication :</strong> Zina [NOM DE FAMILLE]</p>
+      <p><strong>Numéro SIRET/RC :</strong> [À COMPLÉTER]</p>
 
-<p>
-Hébergement : Vercel Inc.<br>
-440 N Barranca Ave #4133<br>
-Covina, CA 91723<br>
-USA
-</p>
+      <h2>2. Hébergement</h2>
+      <p><strong>Hébergeur :</strong> Vercel Inc.</p>
+      <p><strong>Adresse :</strong> 440 N Barranca Ave #4133, Covina, CA 91723, USA</p>
+      <p><strong>Site web :</strong> <a href="https://vercel.com" target="_blank" style="color:var(--mauve);">vercel.com</a></p>
 
-<p>
-Le contenu du site est protégé par le droit d’auteur.
-Toute reproduction est interdite sans autorisation.
-</p>
+      <h2>3. Propriété intellectuelle</h2>
+      <p>L'ensemble du contenu présent sur le site Muslimah Society (textes, images, vidéos, audios, graphismes, logos, icônes, etc.) est la propriété exclusive de Muslimah Society ou de ses partenaires.</p>
+      
+      <div class="highlight">
+        <p><strong>⚠️ Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable.</strong></p>
+      </div>
+
+      <p>Les contenus islamiques (Qur'an, Hadiths, etc.) appartiennent au patrimoine islamique et sont partagés dans un but éducatif.</p>
+
+      <h2>4. Protection des données personnelles</h2>
+      <p>Conformément au RGPD et à la loi algérienne sur la protection des données, vous disposez d'un droit d'accès, de rectification et de suppression de vos données personnelles.</p>
+      
+      <p>Pour exercer ces droits, contactez-nous à : <strong>hello@muslimahsociety.com</strong></p>
+      
+      <p>Pour plus d'informations, consultez notre <a href="privacy.html" style="color:var(--mauve); font-weight:600;">Politique de Confidentialité</a>.</p>
+
+      <h2>5. Cookies</h2>
+      <p>Le site utilise des cookies techniques nécessaires au bon fonctionnement de la plateforme (authentification, préférences utilisateur).</p>
+      
+      <p>Aucun cookie publicitaire ou de tracking n'est utilisé.</p>
+
+      <h2>6. Responsabilité</h2>
+      <p>Muslimah Society s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce site. Toutefois, nous ne pouvons garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition.</p>
+
+      <p>Muslimah Society ne saurait être tenue responsable :</p>
+      <ul>
+        <li>Des erreurs ou omissions dans les contenus</li>
+        <li>De l'indisponibilité temporaire du site</li>
+        <li>De tout dommage résultant de l'utilisation du site</li>
+        <li>Des liens externes vers d'autres sites</li>
+      </ul>
+
+      <h2>7. Droit applicable</h2>
+      <p>Les présentes mentions légales sont régies par le droit algérien.</p>
+      
+      <p>En cas de litige, les tribunaux algériens seront seuls compétents.</p>
+
+      <h2>8. Contact</h2>
+      <p>Pour toute question concernant ces mentions légales :</p>
+      <p><strong>Email :</strong> hello@muslimahsociety.com</p>
+
+      <div class="highlight">
+        <p><strong>Dernière mise à jour :</strong> Février 2026</p>
+      </div>
+
+      <a href="index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+  </div>
 
 </body>
 </html>

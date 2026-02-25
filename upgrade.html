@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Accès réservé — Muslimah Society</title>
+  <title>Passer à VIP — Muslimah Society</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
 :root{
       --rose:#E8D7DF;
@@ -19,18 +19,16 @@
       --shadow2: 0 10px 30px rgba(0,0,0,.06);
       --radius: 26px;
     }
-
     *{margin:0;padding:0;box-sizing:border-box}
     body{
       font-family:'Montserrat',sans-serif;
       background:var(--cream);
       color:var(--text);
-      line-height:1.6;
+      line-height:1.7;
       padding-top:90px;
     }
     h1,h2,h3{font-family:'Playfair Display',serif}
-    a{color:inherit}
-
+    
     .navbar{
       position:fixed; top:0; left:0; right:0;
       display:flex; align-items:center; justify-content:space-between;
@@ -40,7 +38,6 @@
       border-bottom: 1px solid rgba(200,182,216,.35);
       z-index:999;
     }
-
     .logo{
       font-family:'Playfair Display',serif;
       font-size:22px;
@@ -64,188 +61,489 @@
       opacity:.9;
     }
 
-    .nav-links{
-      list-style:none;
-      display:flex;
-      gap:18px;
-      align-items:center;
-    }
-    .nav-links a{
-      text-decoration:none;
-      color:rgba(200,182,216,.95);
-      font-weight:500;
-      padding:10px 12px;
-      border-radius:999px;
-      transition:.25s;
-    }
-    .nav-links a:hover{
-      background: rgba(232,215,223,.55);
-      color:#8f77a9;
-    }
-    .nav-cta{
-      background: rgba(200,182,216,.28);
-      border: 1px solid rgba(200,182,216,.35);
-      color:#8f77a9 !important;
-    }
-    .nav-cta:hover{ background: rgba(232,215,223,.55) !important; }
-
-    .site-footer{
-      margin-top: 80px;
-      background: rgba(255,255,255,.78);
-      border-top: 1px solid rgba(200,182,216,.25);
-      padding: 40px 18px 18px;
-      color: rgba(44,44,44,.75);
-    }
-    .footer-inner{
-      width:min(1100px,100%);
+    .container{
+      max-width:1100px;
       margin:0 auto;
-      display:grid;
-      grid-template-columns: 1.2fr 1.8fr;
-      gap: 22px;
-      align-items:start;
+      padding:40px 20px;
     }
-    .footer-logo{
+
+    .upgrade-header{
+      text-align:center;
+      padding:60px 20px;
+      background: linear-gradient(135deg, var(--gold), var(--mauve));
+      margin:-40px -20px 50px;
+      border-radius:0 0 40px 40px;
+    }
+    
+    .upgrade-header .badge{
+      display:inline-block;
+      padding:8px 24px;
+      background:rgba(255,255,255,.25);
+      border:1px solid rgba(255,255,255,.40);
+      border-radius:999px;
+      color:#fff;
+      font-size:12px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      margin-bottom:20px;
+      font-weight:600;
+    }
+    
+    .upgrade-header h1{
+      font-size:clamp(36px, 5vw, 64px);
+      color:#fff;
+      margin-bottom:16px;
+      font-weight:700;
+    }
+    
+    .upgrade-header .subtitle{
+      font-family:'Great Vibes', cursive;
+      font-size:clamp(28px, 4vw, 48px);
+      color:rgba(255,255,255,.95);
+      margin-bottom:20px;
+    }
+    
+    .upgrade-header p{
+      color:rgba(255,255,255,.90);
+      font-size:18px;
+      max-width:700px;
+      margin:0 auto;
+    }
+
+    .comparison{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+      margin-bottom:50px;
+    }
+
+    .plan-card{
+      background:rgba(255,255,255,.90);
+      border:2px solid rgba(200,182,216,.30);
+      border-radius:var(--radius);
+      padding:40px 30px;
+      box-shadow:var(--shadow2);
+      position:relative;
+    }
+
+    .plan-card.current{
+      border-color:rgba(200,182,216,.50);
+    }
+
+    .plan-card.vip{
+      border-color:var(--gold);
+      background: linear-gradient(135deg, rgba(255,255,255,1), rgba(245,239,232,.50));
+      box-shadow:var(--shadow);
+    }
+
+    .plan-card .icon{
+      font-size:52px;
+      margin-bottom:16px;
+      text-align:center;
+    }
+
+    .plan-card h2{
+      font-size:32px;
+      color:var(--gold);
+      text-align:center;
+      margin-bottom:12px;
+    }
+
+    .plan-card .price{
+      text-align:center;
+      font-size:48px;
+      font-weight:700;
+      color:var(--mauve);
+      margin-bottom:8px;
+    }
+
+    .plan-card .price span{
+      font-size:18px;
+      color:var(--text);
+      font-weight:400;
+    }
+
+    .plan-card .tagline{
+      text-align:center;
+      color:rgba(44,44,44,.65);
+      margin-bottom:30px;
+      font-style:italic;
+    }
+
+    .features{
+      list-style:none;
+      padding:0;
+    }
+
+    .features li{
+      padding:12px 0;
+      border-bottom:1px solid rgba(200,182,216,.15);
       display:flex;
       align-items:center;
-      gap:10px;
-      font-family:'Playfair Display',serif;
-      color: var(--gold);
-      font-size: 20px;
-      margin-bottom: 10px;
+      gap:12px;
     }
-    .footer-muted{ color: rgba(44,44,44,.62); font-size: 14px; max-width: 420px; }
-    .footer-cols{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 14px;
+
+    .features li:last-child{
+      border-bottom:none;
     }
-    .footer-col h4{
-      font-family:'Playfair Display',serif;
-      font-size: 16px;
-      color: rgba(44,44,44,.90);
-      margin-bottom: 10px;
+
+    .features li.included{
+      color:var(--text);
     }
-    .footer-col a{
-      display:block;
-      text-decoration:none;
-      padding: 8px 10px;
-      border-radius: 12px;
-      color: rgba(143,119,169,.92);
-      transition: .2s;
-      font-weight: 500;
+
+    .features li.excluded{
+      color:rgba(44,44,44,.40);
+      text-decoration:line-through;
     }
-    .footer-col a:hover{
-      background: rgba(232,215,223,.45);
-      color:#8f77a9;
-    }
-    .footer-bottom{
-      width:min(1100px,100%);
-      margin: 18px auto 0;
-      padding-top: 16px;
-      border-top: 1px solid rgba(200,182,216,.25);
+
+    .features .check{
+      flex-shrink:0;
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      background:var(--gold);
+      color:#fff;
       display:flex;
-      flex-wrap:wrap;
-      gap:10px;
+      align-items:center;
       justify-content:center;
-      font-size: 13px;
-      color: rgba(44,44,44,.62);
-    }
-    .footer-link{ text-decoration:none; color: rgba(143,119,169,.92); font-weight:600; }
-    .footer-link:hover{ text-decoration:underline; }
-    .footer-sep{ opacity:.7; }
-
-    @media (max-width: 900px){
-      .nav-links{display:none;}
-      body{padding-top:80px;}
-      .footer-inner{grid-template-columns:1fr;}
-      .footer-cols{grid-template-columns:1fr;}
+      font-weight:700;
+      font-size:14px;
     }
 
-  main.page{width:min(980px,100%); margin:0 auto; padding:32px 18px;}
-  .card{background:rgba(255,255,255,.85); border:1px solid rgba(200,182,216,.25); border-radius:26px; box-shadow:var(--shadow2); padding:18px;}
-  .muted{color:rgba(44,44,44,.68);}
-  .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;border:1px solid rgba(200,182,216,.35);text-decoration:none;font-weight:600;transition:.2s;box-shadow:var(--shadow2); cursor:pointer}
-  .btn:hover{transform:translateY(-2px); box-shadow:var(--shadow);}
-  .btn.primary{background:rgba(232,215,223,.92); color:#fff; border-color:rgba(255,255,255,.6);}
-  .btn.secondary{background:rgba(200,182,216,.92); color:#fff; border-color:rgba(255,255,255,.6);}
-  .btn.ghost{background:rgba(255,255,255,.65); color:#8f77a9;}
-  .stack{display:flex; flex-direction:column; gap:12px;}
-  .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
-  input{width:min(420px,100%); padding:12px 14px; border-radius:999px; border:1px solid rgba(200,182,216,.35); outline:none; background:rgba(255,255,255,.70);}
+    .features .cross{
+      flex-shrink:0;
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      background:rgba(200,182,216,.25);
+      color:rgba(44,44,44,.40);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      font-size:14px;
+    }
 
+    .btn{
+      display:block;
+      width:100%;
+      padding:16px 32px;
+      border-radius:999px;
+      border:none;
+      font-weight:700;
+      font-size:16px;
+      text-align:center;
+      text-decoration:none;
+      transition:.3s;
+      cursor:pointer;
+      margin-top:30px;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+    }
 
+    .btn.primary{
+      background: linear-gradient(135deg, var(--gold), rgba(198,168,107,.85));
+      color:#fff;
+      box-shadow:var(--shadow2);
+    }
+
+    .btn.primary:hover{
+      transform:translateY(-3px);
+      box-shadow:var(--shadow);
+    }
+
+    .btn.secondary{
+      background:rgba(200,182,216,.25);
+      color:var(--mauve);
+      border:2px solid var(--mauve);
+    }
+
+    .btn.secondary:hover{
+      background:var(--mauve);
+      color:#fff;
+    }
+
+    .benefits{
+      background:rgba(255,255,255,.90);
+      border:2px solid var(--gold);
+      border-radius:var(--radius);
+      padding:40px;
+      margin-bottom:50px;
+      box-shadow:var(--shadow2);
+    }
+
+    .benefits h2{
+      font-size:32px;
+      color:var(--gold);
+      text-align:center;
+      margin-bottom:30px;
+    }
+
+    .benefits-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+      gap:30px;
+    }
+
+    .benefit-item{
+      text-align:center;
+    }
+
+    .benefit-item .emoji{
+      font-size:48px;
+      margin-bottom:12px;
+    }
+
+    .benefit-item h3{
+      font-size:20px;
+      color:var(--mauve);
+      margin-bottom:8px;
+    }
+
+    .benefit-item p{
+      color:rgba(44,44,44,.70);
+      font-size:15px;
+    }
+
+    .faq{
+      margin-top:50px;
+    }
+
+    .faq h2{
+      font-size:32px;
+      color:var(--gold);
+      text-align:center;
+      margin-bottom:30px;
+    }
+
+    .faq-item{
+      background:rgba(255,255,255,.85);
+      border:1px solid rgba(200,182,216,.25);
+      border-radius:20px;
+      padding:25px;
+      margin-bottom:16px;
+    }
+
+    .faq-item h3{
+      font-size:18px;
+      color:var(--mauve);
+      margin-bottom:10px;
+    }
+
+    .faq-item p{
+      color:rgba(44,44,44,.75);
+    }
+
+    @media (max-width:900px){
+      .comparison{
+        grid-template-columns:1fr;
+      }
+      .benefits-grid{
+        grid-template-columns:1fr;
+      }
+    }
   </style>
 </head>
 <body>
+
 <header class="navbar">
     <a class="logo" href="index.html"><span class="logo-badge"></span>Muslimah Society</a>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="library.html">Bibliothèque</a></li>
-        <li><a href="audio.html">Audithèque</a></li>
-        <li><a href="vip-events.html">Événements</a></li>
-        <li><a href="pricing.html">Abonnements</a></li>
-        <li><a href="dashboard.html">Espace membre</a></li>
-        <li><a href="login.html" class="nav-cta">Connexion</a></li>
-      </ul>
-    </nav>
   </header>
 
-<main class="page">
+  <div class="container">
+    
+    <div class="upgrade-header">
+      <span class="badge">✦ Upgrade Disponible ✦</span>
+      <h1>Passe à VIP</h1>
+      <p class="subtitle">L'expérience premium complète</p>
+      <p>Débloquer les événements exclusifs, les contenus VIP et la communauté privée</p>
+    </div>
 
-<section class="card stack">
-  <h1 style="color:var(--gold); font-family:'Playfair Display',serif;">Accès réservé</h1>
-  <p class="muted">Tu dois avoir un abonnement actif (Member ou VIP) pour accéder à ce contenu.</p>
-  <div class="row">
-    <a class="btn primary" href="pricing.html">Voir les abonnements</a>
-    <a class="btn ghost" href="login.html">Connexion</a>
+    <!-- COMPARAISON -->
+    <div class="comparison">
+      
+      <!-- MEMBER ACTUEL -->
+      <div class="plan-card current">
+        <div class="icon">🌸</div>
+        <h2>Member</h2>
+        <div class="price">12,99€<span>/mois</span></div>
+        <p class="tagline">Ton abonnement actuel</p>
+
+        <ul class="features">
+          <li class="included">
+            <span class="check">✓</span>
+            <span>Bibliothèque complète (PDFs, planners)</span>
+          </li>
+          <li class="included">
+            <span class="check">✓</span>
+            <span>Audithèque (rappels, cours, podcasts)</span>
+          </li>
+          <li class="included">
+            <span class="check">✓</span>
+            <span>Newsletter hebdomadaire</span>
+          </li>
+          <li class="excluded">
+            <span class="cross">✗</span>
+            <span>Événements VIP</span>
+          </li>
+          <li class="excluded">
+            <span class="cross">✗</span>
+            <span>Contenu exclusif VIP</span>
+          </li>
+          <li class="excluded">
+            <span class="cross">✗</span>
+            <span>Groupe WhatsApp privé</span>
+          </li>
+          <li class="excluded">
+            <span class="cross">✗</span>
+            <span>Ateliers mensuels privés</span>
+          </li>
+        </ul>
+
+        <a href="dashboard.html" class="btn secondary">Rester Member</a>
+      </div>
+
+      <!-- VIP -->
+      <div class="plan-card vip">
+        <div class="icon">👑</div>
+        <h2>VIP</h2>
+        <div class="price">39,99€<span>/mois</span></div>
+        <p class="tagline">Tout Member + les exclusivités</p>
+
+        <ul class="features">
+          <li class="included">
+            <span class="check">✓</span>
+            <span>Bibliothèque complète (PDFs, planners)</span>
+          </li>
+          <li class="included">
+            <span class="check">✓</span>
+            <span>Audithèque (rappels, cours, podcasts)</span>
+          </li>
+          <li class="included">
+            <span class="check">✓</span>
+            <span>Newsletter hebdomadaire</span>
+          </li>
+          <li class="included">
+            <span class="check">✓</span>
+            <span><strong>Événements VIP (soirées mensuelles)</strong></span>
+          </li>
+          <li class="included">
+            <span class="check">✓</span>
+            <span><strong>Contenu exclusif VIP</strong></span>
+          </li>
+          <li class="included">
+            <span class="check">✓</span>
+            <span><strong>Groupe WhatsApp privé</strong></span>
+          </li>
+          <li class="included">
+            <span class="check">✓</span>
+            <span><strong>Ateliers mensuels privés</strong></span>
+          </li>
+        </ul>
+
+        <button class="btn primary" onclick="upgradeToVIP()">👑 Passer à VIP Maintenant</button>
+      </div>
+
+    </div>
+
+    <!-- BÉNÉFICES VIP -->
+    <div class="benefits">
+      <h2>Pourquoi passer VIP ?</h2>
+      
+      <div class="benefits-grid">
+        
+        <div class="benefit-item">
+          <div class="emoji">🎭</div>
+          <h3>Soirées exclusives</h3>
+          <p>1 événement VIP par mois à Alger - rencontres élégantes, science et sororité</p>
+        </div>
+
+        <div class="benefit-item">
+          <div class="emoji">📖</div>
+          <h3>Contenu premium</h3>
+          <p>Accès à des contenus exclusifs réservés aux membres VIP uniquement</p>
+        </div>
+
+        <div class="benefit-item">
+          <div class="emoji">💬</div>
+          <h3>Communauté privée</h3>
+          <p>Groupe WhatsApp VIP pour échanger avec des sœurs motivées et inspirantes</p>
+        </div>
+
+        <div class="benefit-item">
+          <div class="emoji">🎓</div>
+          <h3>Ateliers mensuels</h3>
+          <p>Sessions privées d'approfondissement (tadabbur, fiqh, développement personnel)</p>
+        </div>
+
+        <div class="benefit-item">
+          <div class="emoji">✨</div>
+          <h3>Places prioritaires</h3>
+          <p>Réservation en priorité pour tous les événements et nouveautés</p>
+        </div>
+
+        <div class="benefit-item">
+          <div class="emoji">🎁</div>
+          <h3>Cadeaux exclusifs</h3>
+          <p>Surprises et cadeaux réservés aux membres VIP (planners, goodies, etc.)</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq">
+      <h2>Questions fréquentes</h2>
+
+      <div class="faq-item">
+        <h3>Puis-je annuler à tout moment ?</h3>
+        <p>Oui, tu peux résilier ton abonnement VIP à tout moment. La résiliation prend effet à la fin de ta période payée.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Que se passe-t-il si je rétrograde vers Member ?</h3>
+        <p>Tu garderas l'accès VIP jusqu'à la fin de ta période payée, puis tu passeras automatiquement à Member. Tu conserves tous tes contenus téléchargés.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Comment se passent les événements VIP ?</h3>
+        <p>1 soirée par mois à Alger, dans un cadre élégant. Programme annoncé 2 semaines à l'avance. Places limitées, réservation prioritaire pour VIP.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Le paiement est-il sécurisé ?</h3>
+        <p>Oui, tous les paiements sont traités par Stripe, une plateforme ultra-sécurisée. Nous ne stockons jamais tes informations bancaires.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Y a-t-il un engagement minimum ?</h3>
+        <p>Non, l'abonnement VIP est sans engagement. Tu paies mois par mois et tu peux annuler quand tu veux.</p>
+      </div>
+    </div>
+
   </div>
-</section>
 
-</main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/billing.js"></script>
 
-<footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="footer-logo"><span class="logo-badge"></span><span>Muslimah Society</span></div>
-        <p class="footer-muted">Bibliothèque • Audithèque • Événements • Communauté</p>
-      </div>
+  <script>
+    // Rediriger vers pricing avec le plan VIP
+    async function upgradeToVIP() {
+      // Vérifier si l'utilisateur est connecté
+      const { data: { session } } = await supabaseClient.auth.getSession();
+      
+      if (!session) {
+        alert('Connecte-toi d\'abord pour upgrader ton abonnement');
+        window.location.href = 'login.html';
+        return;
+      }
 
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h4>Plateforme</h4>
-          <a href="pricing.html">Abonnements</a>
-          <a href="dashboard.html">Espace membre</a>
-          <a href="login.html">Connexion</a>
-          <a href="register.html">Inscription</a>
-        </div>
+      // Rediriger vers le checkout VIP
+      window.location.href = 'pricing.html?plan=vip&upgrade=true';
+    }
+  </script>
 
-        <div class="footer-col">
-          <h4>Contenus</h4>
-          <a href="library.html">Bibliothèque</a>
-          <a href="audio.html">Audithèque</a>
-          <a href="vip-events.html">Soirées VIP</a>
-        </div>
-
-        <div class="footer-col">
-          <h4>Liens</h4>
-          <a href="index.html">Accueil</a>
-          <a href="index.html#piliers">Piliers</a>
-          <a href="index.html#programmes">Programmes</a>
-          <a href="index.html#newsletter">Newsletter</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <span>© 2026 Muslimah Society — Tous droits réservés</span>
-      <span class="footer-sep">•</span>
-      <a href="#" class="footer-link">Mentions légales</a>
-      <span class="footer-sep">•</span>
-      <a href="#" class="footer-link">Politique de confidentialité</a>
-    </div>
-  </footer>
 </body>
 </html>
-

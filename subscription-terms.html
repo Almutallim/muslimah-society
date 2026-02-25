@@ -1,61 +1,419 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Conditions d'abonnement — Muslimah Society</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Conditions d'Abonnement — Muslimah Society</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+:root{
+      --rose:#E8D7DF;
+      --mauve:#C8B6D8;
+      --beige:#F5EFE8;
+      --cream:#FCFAF8;
+      --gold:#C6A86B;
+      --text:#2C2C2C;
+      --shadow: 0 18px 45px rgba(0,0,0,.08);
+      --shadow2: 0 10px 30px rgba(0,0,0,.06);
+      --radius: 26px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:'Montserrat',sans-serif;
+      background:var(--cream);
+      color:var(--text);
+      line-height:1.7;
+      padding-top:90px;
+    }
+    h1,h2,h3{font-family:'Playfair Display',serif}
+    
+    .navbar{
+      position:fixed; top:0; left:0; right:0;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:18px 28px;
+      background:rgba(255,255,255,.78);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(200,182,216,.35);
+      z-index:999;
+    }
+    .logo{
+      font-family:'Playfair Display',serif;
+      font-size:22px;
+      letter-spacing:.2px;
+      color:var(--gold);
+      display:flex; align-items:center; gap:10px;
+      text-decoration:none;
+    }
+    .logo-badge{
+      width:34px;height:34px;border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--beige));
+      border: 1px solid rgba(198,168,107,.35);
+      box-shadow: 0 8px 20px rgba(0,0,0,.06);
+      position:relative;
+    }
+    .logo-badge::after{
+      content:"";
+      position:absolute; inset:8px;
+      border-radius:50%;
+      border: 1px dashed rgba(198,168,107,.55);
+      opacity:.9;
+    }
+
+    .container{
+      max-width:900px;
+      margin:0 auto;
+      padding:40px 20px;
+    }
+
+    .legal-header{
+      text-align:center;
+      padding:40px 20px;
+      background: linear-gradient(135deg, var(--rose), var(--mauve));
+      margin:-40px -20px 40px;
+      border-radius:0 0 30px 30px;
+    }
+    .legal-header h1{
+      font-size:clamp(32px, 4vw, 48px);
+      color:#fff;
+      margin-bottom:10px;
+    }
+    .legal-header p{
+      color:rgba(255,255,255,.90);
+      font-size:16px;
+    }
+
+    .legal-content{
+      background:rgba(255,255,255,.85);
+      border:1px solid rgba(200,182,216,.25);
+      border-radius:var(--radius);
+      padding:40px;
+      box-shadow:var(--shadow2);
+    }
+
+    .legal-content h2{
+      font-size:28px;
+      color:var(--gold);
+      margin:30px 0 15px;
+      padding-bottom:10px;
+      border-bottom:2px solid var(--beige);
+    }
+    .legal-content h2:first-child{
+      margin-top:0;
+    }
+
+    .legal-content h3{
+      font-size:20px;
+      color:var(--mauve);
+      margin:20px 0 10px;
+    }
+
+    .legal-content p{
+      margin-bottom:15px;
+      color:rgba(44,44,44,.75);
+    }
+
+    .legal-content ul{
+      margin:15px 0 15px 25px;
+      color:rgba(44,44,44,.75);
+    }
+    .legal-content li{
+      margin-bottom:8px;
+    }
+
+    .highlight{
+      background:var(--beige);
+      padding:20px;
+      border-radius:16px;
+      margin:20px 0;
+      border-left:4px solid var(--gold);
+    }
+
+    .price-table{
+      width:100%;
+      margin:20px 0;
+      border-collapse:collapse;
+    }
+    .price-table th{
+      background:var(--mauve);
+      color:#fff;
+      padding:12px;
+      text-align:left;
+    }
+    .price-table td{
+      padding:12px;
+      border-bottom:1px solid rgba(200,182,216,.25);
+    }
+    .price-table tr:hover{
+      background:var(--beige);
+    }
+
+    .back-link{
+      display:inline-block;
+      margin-top:30px;
+      padding:12px 24px;
+      background:var(--mauve);
+      color:#fff;
+      text-decoration:none;
+      border-radius:999px;
+      font-weight:600;
+      transition:.3s;
+    }
+    .back-link:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow2);
+    }
+
+    @media (max-width:768px){
+      .legal-content{padding:25px;}
+    }
+  </style>
 </head>
 <body>
 
-<h1>Conditions d'abonnement</h1>
+<header class="navbar">
+    <a class="logo" href="index.html"><span class="logo-badge"></span>Muslimah Society</a>
+  </header>
 
-<h2>Abonnements disponibles</h2>
+  <div class="container">
+    <div class="legal-header">
+      <h1>Conditions d'Abonnement</h1>
+      <p>Tout savoir sur nos formules Member et VIP</p>
+    </div>
 
-<p>
-Muslimah Society propose deux abonnements :
-</p>
+    <div class="legal-content">
+      
+      <h2>1. Formules d'abonnement</h2>
+      
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>Formule</th>
+            <th>Prix</th>
+            <th>Accès</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Gratuit</strong></td>
+            <td>0€</td>
+            <td>Contenu public uniquement</td>
+          </tr>
+          <tr>
+            <td><strong>🌸 Member</strong></td>
+            <td>12,99€/mois</td>
+            <td>Bibliothèque complète + Audithèque</td>
+          </tr>
+          <tr>
+            <td><strong>👑 VIP</strong></td>
+            <td>39,99€/mois</td>
+            <td>Tout Member + Événements VIP + Contenu exclusif</td>
+          </tr>
+        </tbody>
+      </table>
 
-<ul>
-<li>Member</li>
-<li>VIP</li>
-</ul>
+      <div class="highlight">
+        <p><strong>✦ Tous les prix sont en euros (€) TTC.</strong></p>
+      </div>
 
-<h2>Paiement</h2>
+      <h2>2. Souscription</h2>
+      
+      <h3>2.1 Activation</h3>
+      <p>Votre abonnement est activé immédiatement après paiement réussi.</p>
+      
+      <p>Vous recevez un email de confirmation avec vos accès.</p>
 
-<p>
-Les paiements sont traités de manière sécurisée via Stripe.
-</p>
+      <h3>2.2 Méthodes de paiement</h3>
+      <p>Nous acceptons :</p>
+      <ul>
+        <li>✅ Cartes bancaires (Visa, Mastercard, American Express)</li>
+        <li>✅ Cartes prépayées</li>
+        <li>✅ Google Pay / Apple Pay (via Stripe)</li>
+      </ul>
 
-<p>
-L'abonnement est renouvelé automatiquement chaque mois.
-</p>
+      <p>Les paiements sont traités de manière 100% sécurisée par <strong>Stripe</strong>.</p>
 
-<h2>Annulation</h2>
+      <h2>3. Renouvellement et facturation</h2>
+      
+      <h3>3.1 Reconduction tacite</h3>
+      <p>Les abonnements sont à <strong>reconduction automatique mensuelle</strong>.</p>
+      
+      <p>Exemple : Si vous vous abonnez le 15 janvier, vous serez prélevée le 15 de chaque mois.</p>
 
-<p>
-L'utilisateur peut annuler son abonnement à tout moment.
-</p>
+      <h3>3.2 Facturation</h3>
+      <p>Vous recevez une facture par email à chaque prélèvement.</p>
 
-<p>
-L'accès reste actif jusqu'à la fin de la période payée.
-</p>
+      <h3>3.3 Échec de paiement</h3>
+      <p>En cas d'échec de paiement :</p>
+      <ul>
+        <li>Nous tentons un nouveau prélèvement 3 jours plus tard</li>
+        <li>Vous recevez un email d'alerte</li>
+        <li>Si le paiement échoue après 3 tentatives, votre abonnement est suspendu</li>
+        <li>Vous conservez vos données et pouvez réactiver facilement</li>
+      </ul>
 
-<h2>Remboursement</h2>
+      <div class="highlight">
+        <p><strong>⚠️ Assurez-vous que votre carte bancaire est à jour pour éviter les interruptions.</strong></p>
+      </div>
 
-<p>
-Les paiements ne sont pas remboursables sauf obligation légale.
-</p>
+      <h2>4. Période d'essai et codes promo</h2>
+      
+      <h3>4.1 Codes promotionnels</h3>
+      <p>Nous proposons occasionnellement des codes promo (ex: EARLY50, RAMADAN2026).</p>
+      
+      <p>Les conditions spécifiques sont indiquées pour chaque code.</p>
 
-<h2>Accès VIP</h2>
+      <h3>4.2 Limites des promotions</h3>
+      <ul>
+        <li>Un seul code promo par abonnement</li>
+        <li>Non cumulable avec d'autres offres</li>
+        <li>Valable uniquement sur les nouveaux abonnements (sauf mention contraire)</li>
+      </ul>
 
-<p>
-L'accès VIP donne accès à des contenus exclusifs et événements privés.
-</p>
+      <h2>5. Changement de formule</h2>
+      
+      <h3>5.1 Upgrade (Member → VIP)</h3>
+      <p>Vous pouvez passer à VIP à tout moment depuis votre espace membre.</p>
+      
+      <p>Le changement est <strong>immédiat</strong> et vous êtes facturée au prorata.</p>
 
-<h2>Modification</h2>
+      <h3>5.2 Downgrade (VIP → Member)</h3>
+      <p>Vous pouvez rétrograder vers Member.</p>
+      
+      <p>Le changement prendra effet à la <strong>fin de votre période VIP en cours</strong>.</p>
 
-<p>
-Muslimah Society peut modifier les abonnements à tout moment.
-</p>
+      <h2>6. Résiliation</h2>
+      
+      <h3>6.1 Comment résilier ?</h3>
+      <p>Vous pouvez résilier à tout moment en 2 clics :</p>
+      <ol>
+        <li>Connectez-vous à votre espace membre</li>
+        <li>Allez dans "Gérer mon abonnement"</li>
+        <li>Cliquez sur "Annuler l'abonnement"</li>
+      </ol>
+
+      <h3>6.2 Date d'effet</h3>
+      <p>La résiliation prend effet à la <strong>fin de la période payée</strong>.</p>
+      
+      <p>Exemple : Si vous annulez le 10 février et que votre prochaine date de facturation est le 28 février, vous gardez l'accès jusqu'au 27 février inclus.</p>
+
+      <h3>6.3 Pas de remboursement prorata</h3>
+      <p>Les mois partiellement utilisés ne sont pas remboursés.</p>
+
+      <div class="highlight">
+        <p><strong>💡 Astuce : Annulez juste avant votre prochaine date de facturation pour profiter au maximum.</strong></p>
+      </div>
+
+      <h2>7. Remboursements</h2>
+      
+      <h3>7.1 Politique générale</h3>
+      <p>Les abonnements ne sont <strong>pas remboursables</strong>, sauf dans les cas suivants :</p>
+
+      <h3>7.2 Droit de rétractation (14 jours)</h3>
+      <p>Conformément au droit de la consommation, vous disposez de <strong>14 jours</strong> pour vous rétracter après votre première souscription.</p>
+      
+      <p>Pour exercer ce droit, envoyez un email à : hello@muslimahsociety.com</p>
+
+      <p><strong>Exception :</strong> Si vous avez déjà accédé aux contenus premium, le droit de rétractation ne s'applique pas.</p>
+
+      <h3>7.3 Erreur de facturation</h3>
+      <p>Si vous constatez une erreur (double prélèvement, montant incorrect), contactez-nous immédiatement.</p>
+      
+      <p>Nous procédons au remboursement sous 7 jours ouvrés.</p>
+
+      <h2>8. Modifications tarifaires</h2>
+      
+      <p>Nous nous réservons le droit de modifier nos tarifs.</p>
+
+      <h3>8.1 Abonnées actuelles</h3>
+      <p>Si vous êtes déjà abonnée, vous bénéficiez d'une <strong>garantie prix pendant 3 mois</strong> minimum.</p>
+      
+      <p>Vous serez prévenue <strong>30 jours avant</strong> toute augmentation.</p>
+
+      <h3>8.2 Refus de la nouvelle tarification</h3>
+      <p>Si vous n'acceptez pas le nouveau prix, vous pouvez résilier sans frais avant la date d'application.</p>
+
+      <h2>9. Programme de parrainage</h2>
+      
+      <p>Vous pouvez parrainer d'autres sœurs et gagner des récompenses :</p>
+
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>Parrainages</th>
+            <th>Récompense</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>3 parrainages</td>
+            <td>1 mois à -50%</td>
+          </tr>
+          <tr>
+            <td>5 parrainages</td>
+            <td>1 mois GRATUIT</td>
+          </tr>
+          <tr>
+            <td>10 parrainages</td>
+            <td>3 mois GRATUITS</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Les récompenses sont créditées automatiquement sur votre compte.</p>
+
+      <h2>10. Suspension de compte</h2>
+      
+      <p>Nous pouvons suspendre votre abonnement en cas de :</p>
+      <ul>
+        <li>Violation des CGU</li>
+        <li>Partage de compte</li>
+        <li>Redistribution de contenus</li>
+        <li>Impayés répétés</li>
+        <li>Comportement inapproprié</li>
+      </ul>
+
+      <p>En cas de suspension pour violation, aucun remboursement ne sera effectué.</p>
+
+      <h2>11. Accès aux contenus après résiliation</h2>
+      
+      <p>Après résiliation de votre abonnement :</p>
+      <ul>
+        <li>❌ Vous perdez l'accès aux contenus premium</li>
+        <li>❌ Vous ne pouvez plus télécharger de PDFs</li>
+        <li>❌ Vous ne pouvez plus écouter les audios</li>
+        <li>✅ Vous conservez votre compte gratuit</li>
+        <li>✅ Vous pouvez vous réabonner à tout moment</li>
+      </ul>
+
+      <h2>12. Garantie de satisfaction</h2>
+      
+      <p>Nous nous engageons à :</p>
+      <ul>
+        <li>✅ Fournir des contenus de qualité et authentiques</li>
+        <li>✅ Mettre à jour régulièrement la bibliothèque et l'audithèque</li>
+        <li>✅ Organiser au minimum 1 événement VIP par mois (formule VIP)</li>
+        <li>✅ Assurer un support client réactif</li>
+      </ul>
+
+      <h2>13. Contact et support</h2>
+      
+      <p><strong>Questions sur votre abonnement ?</strong></p>
+      
+      <p>Email : hello@muslimahsociety.com</p>
+      <p>Réponse sous 48h maximum (hors week-end)</p>
+
+      <div class="highlight">
+        <p><strong>Dernière mise à jour :</strong> Février 2026</p>
+      </div>
+
+      <div style="margin-top:30px; text-align:center;">
+        <a href="pricing.html" class="back-link" style="margin-right:10px;">Voir les abonnements</a>
+        <a href="index.html" class="back-link">← Retour à l'accueil</a>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>

@@ -1,54 +1,330 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Conditions d'utilisation — Muslimah Society</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Conditions Générales d'Utilisation — Muslimah Society</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+:root{
+      --rose:#E8D7DF;
+      --mauve:#C8B6D8;
+      --beige:#F5EFE8;
+      --cream:#FCFAF8;
+      --gold:#C6A86B;
+      --text:#2C2C2C;
+      --shadow: 0 18px 45px rgba(0,0,0,.08);
+      --shadow2: 0 10px 30px rgba(0,0,0,.06);
+      --radius: 26px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:'Montserrat',sans-serif;
+      background:var(--cream);
+      color:var(--text);
+      line-height:1.7;
+      padding-top:90px;
+    }
+    h1,h2,h3{font-family:'Playfair Display',serif}
+    
+    .navbar{
+      position:fixed; top:0; left:0; right:0;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:18px 28px;
+      background:rgba(255,255,255,.78);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(200,182,216,.35);
+      z-index:999;
+    }
+    .logo{
+      font-family:'Playfair Display',serif;
+      font-size:22px;
+      letter-spacing:.2px;
+      color:var(--gold);
+      display:flex; align-items:center; gap:10px;
+      text-decoration:none;
+    }
+    .logo-badge{
+      width:34px;height:34px;border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--beige));
+      border: 1px solid rgba(198,168,107,.35);
+      box-shadow: 0 8px 20px rgba(0,0,0,.06);
+      position:relative;
+    }
+    .logo-badge::after{
+      content:"";
+      position:absolute; inset:8px;
+      border-radius:50%;
+      border: 1px dashed rgba(198,168,107,.55);
+      opacity:.9;
+    }
+
+    .container{
+      max-width:900px;
+      margin:0 auto;
+      padding:40px 20px;
+    }
+
+    .legal-header{
+      text-align:center;
+      padding:40px 20px;
+      background: linear-gradient(135deg, var(--rose), var(--mauve));
+      margin:-40px -20px 40px;
+      border-radius:0 0 30px 30px;
+    }
+    .legal-header h1{
+      font-size:clamp(32px, 4vw, 48px);
+      color:#fff;
+      margin-bottom:10px;
+    }
+    .legal-header p{
+      color:rgba(255,255,255,.90);
+      font-size:16px;
+    }
+
+    .legal-content{
+      background:rgba(255,255,255,.85);
+      border:1px solid rgba(200,182,216,.25);
+      border-radius:var(--radius);
+      padding:40px;
+      box-shadow:var(--shadow2);
+    }
+
+    .legal-content h2{
+      font-size:28px;
+      color:var(--gold);
+      margin:30px 0 15px;
+      padding-bottom:10px;
+      border-bottom:2px solid var(--beige);
+    }
+    .legal-content h2:first-child{
+      margin-top:0;
+    }
+
+    .legal-content h3{
+      font-size:20px;
+      color:var(--mauve);
+      margin:20px 0 10px;
+    }
+
+    .legal-content p{
+      margin-bottom:15px;
+      color:rgba(44,44,44,.75);
+    }
+
+    .legal-content ul{
+      margin:15px 0 15px 25px;
+      color:rgba(44,44,44,.75);
+    }
+    .legal-content li{
+      margin-bottom:8px;
+    }
+
+    .highlight{
+      background:var(--beige);
+      padding:20px;
+      border-radius:16px;
+      margin:20px 0;
+      border-left:4px solid var(--gold);
+    }
+
+    .back-link{
+      display:inline-block;
+      margin-top:30px;
+      padding:12px 24px;
+      background:var(--mauve);
+      color:#fff;
+      text-decoration:none;
+      border-radius:999px;
+      font-weight:600;
+      transition:.3s;
+    }
+    .back-link:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow2);
+    }
+
+    @media (max-width:768px){
+      .legal-content{padding:25px;}
+    }
+  </style>
 </head>
 <body>
 
-<h1>Conditions d'utilisation</h1>
+<header class="navbar">
+    <a class="logo" href="index.html"><span class="logo-badge"></span>Muslimah Society</a>
+  </header>
 
-<p>
-Bienvenue sur Muslimah Society. En utilisant ce site, vous acceptez les présentes conditions.
-</p>
+  <div class="container">
+    <div class="legal-header">
+      <h1>Conditions Générales d'Utilisation</h1>
+      <p>Les règles d'utilisation de Muslimah Society</p>
+    </div>
 
-<h2>Accès au service</h2>
+    <div class="legal-content">
+      
+      <h2>1. Acceptation des conditions</h2>
+      <p>En créant un compte sur Muslimah Society, vous acceptez sans réserve les présentes Conditions Générales d'Utilisation (CGU).</p>
+      
+      <p>Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser notre plateforme.</p>
 
-<p>
-Le site permet l'accès à des contenus éducatifs, audios, événements et ressources réservées aux membres.
-</p>
+      <h2>2. Objet de la plateforme</h2>
+      <p>Muslimah Society est une plateforme éducative islamique destinée aux femmes musulmanes, proposant :</p>
+      <ul>
+        <li>Une bibliothèque de contenus islamiques authentiques (PDFs, planners, fiches)</li>
+        <li>Une audithèque (rappels, cours, podcasts)</li>
+        <li>Des événements VIP (soirées, rencontres, ateliers)</li>
+        <li>Un espace membre sécurisé</li>
+      </ul>
 
-<h2>Compte utilisateur</h2>
+      <h2>3. Création de compte</h2>
+      
+      <h3>3.1 Conditions d'inscription</h3>
+      <p>Pour créer un compte, vous devez :</p>
+      <ul>
+        <li>Avoir au moins <strong>18 ans</strong> (ou le consentement parental)</li>
+        <li>Fournir des informations exactes et à jour</li>
+        <li>Créer un mot de passe sécurisé</li>
+        <li>Accepter nos CGU et notre Politique de Confidentialité</li>
+      </ul>
 
-<p>
-L'utilisateur est responsable de la confidentialité de ses identifiants.
-</p>
+      <h3>3.2 Responsabilité du compte</h3>
+      <p>Vous êtes responsable de :</p>
+      <ul>
+        <li>La confidentialité de vos identifiants</li>
+        <li>Toutes les activités effectuées depuis votre compte</li>
+        <li>Nous signaler immédiatement tout accès non autorisé</li>
+      </ul>
 
-<p>
-Toute utilisation frauduleuse entraînera la suspension du compte.
-</p>
+      <div class="highlight">
+        <p><strong>⚠️ Ne partagez jamais votre mot de passe avec qui que ce soit.</strong></p>
+      </div>
 
-<h2>Propriété intellectuelle</h2>
+      <h2>4. Abonnements</h2>
+      
+      <h3>4.1 Formules disponibles</h3>
+      <ul>
+        <li><strong>Compte gratuit :</strong> Accès limité (contenu public uniquement)</li>
+        <li><strong>Member (12,99€/mois) :</strong> Accès bibliothèque + audithèque</li>
+        <li><strong>VIP (39,99€/mois) :</strong> Tout Member + événements VIP + contenu exclusif</li>
+      </ul>
 
-<p>
-Tous les contenus appartiennent à Muslimah Society.
-</p>
+      <h3>4.2 Paiement</h3>
+      <p>Les paiements sont traités de manière sécurisée par Stripe.</p>
+      
+      <p>Tous les prix sont en euros (€) et incluent les taxes applicables.</p>
 
-<p>
-Toute reproduction ou redistribution sans autorisation est interdite.
-</p>
+      <h3>4.3 Renouvellement</h3>
+      <p>Les abonnements sont à <strong>reconduction tacite mensuelle</strong>, sauf résiliation.</p>
 
-<h2>Responsabilité</h2>
+      <p>Pour plus de détails, consultez nos <a href="subscription-terms.html" style="color:var(--mauve); font-weight:600;">Conditions d'Abonnement</a>.</p>
 
-<p>
-Muslimah Society ne peut être tenue responsable d'une interruption du service.
-</p>
+      <h2>5. Utilisation du service</h2>
+      
+      <h3>5.1 Usage autorisé</h3>
+      <p>Vous pouvez :</p>
+      <ul>
+        <li>✅ Accéder aux contenus pour votre usage personnel</li>
+        <li>✅ Télécharger les PDFs pour étude personnelle</li>
+        <li>✅ Écouter les audios en streaming</li>
+        <li>✅ Participer aux événements</li>
+      </ul>
 
-<h2>Modification</h2>
+      <h3>5.2 Usage interdit</h3>
+      <p>Il est strictement interdit de :</p>
+      <ul>
+        <li>❌ Partager votre compte avec d'autres personnes</li>
+        <li>❌ Redistribuer, revendre ou publier nos contenus</li>
+        <li>❌ Télécharger massivement nos contenus</li>
+        <li>❌ Utiliser des robots ou scripts automatisés</li>
+        <li>❌ Contourner les mesures de sécurité</li>
+        <li>❌ Diffuser du contenu offensant, haineux ou illégal</li>
+        <li>❌ Usurper l'identité d'une autre personne</li>
+      </ul>
 
-<p>
-Les conditions peuvent être modifiées à tout moment.
-</p>
+      <div class="highlight">
+        <p><strong>⚠️ Toute violation peut entraîner la suspension ou la fermeture immédiate de votre compte, sans remboursement.</strong></p>
+      </div>
+
+      <h2>6. Propriété intellectuelle</h2>
+      
+      <p>Tous les contenus de Muslimah Society (textes, images, audios, PDFs, designs, logos) sont protégés par le droit d'auteur.</p>
+
+      <p><strong>Vous n'êtes PAS autorisée à :</strong></p>
+      <ul>
+        <li>Copier, reproduire ou distribuer nos contenus</li>
+        <li>Modifier ou créer des œuvres dérivées</li>
+        <li>Utiliser nos contenus à des fins commerciales</li>
+        <li>Retirer les mentions de copyright</li>
+      </ul>
+
+      <p><strong>Exception :</strong> Les versets du Qur'an et Hadiths authentiques appartiennent au patrimoine islamique et peuvent être partagés dans un cadre éducatif en citant la source.</p>
+
+      <h2>7. Contenu utilisateur</h2>
+      
+      <p>Si vous publiez du contenu (commentaires, avis, etc.) sur notre plateforme :</p>
+      <ul>
+        <li>Vous restez propriétaire de votre contenu</li>
+        <li>Vous nous accordez une licence pour l'afficher et le modérer</li>
+        <li>Votre contenu doit respecter l'Islam et nos valeurs</li>
+        <li>Nous pouvons supprimer tout contenu inapproprié</li>
+      </ul>
+
+      <h2>8. Résiliation</h2>
+      
+      <h3>8.1 Par vous</h3>
+      <p>Vous pouvez résilier votre abonnement à tout moment depuis votre espace membre.</p>
+
+      <p>La résiliation prend effet à la fin de la période en cours (pas de remboursement prorata).</p>
+
+      <h3>8.2 Par nous</h3>
+      <p>Nous nous réservons le droit de suspendre ou fermer votre compte en cas de :</p>
+      <ul>
+        <li>Violation des présentes CGU</li>
+        <li>Comportement inapproprié</li>
+        <li>Impayés</li>
+        <li>Fraude ou activité suspecte</li>
+      </ul>
+
+      <h2>9. Limitation de responsabilité</h2>
+      
+      <p>Muslimah Society s'efforce de fournir un service de qualité, mais :</p>
+
+      <h3>9.1 Disponibilité</h3>
+      <p>Nous ne garantissons pas une disponibilité 24h/24. Des interruptions peuvent survenir pour maintenance.</p>
+
+      <h3>9.2 Contenus</h3>
+      <p>Bien que nous vérifions l'authenticité des sources islamiques, vous êtes responsable de vérifier auprès de savants si nécessaire.</p>
+
+      <h3>9.3 Liens externes</h3>
+      <p>Nous ne sommes pas responsables du contenu des sites externes vers lesquels nous pouvons créer des liens.</p>
+
+      <h2>10. Droit applicable</h2>
+      <p>Les présentes CGU sont régies par le droit algérien.</p>
+      
+      <p>En cas de litige, nous privilégions une résolution amiable. À défaut, les tribunaux algériens seront compétents.</p>
+
+      <h2>11. Modifications des CGU</h2>
+      <p>Nous pouvons modifier ces CGU à tout moment.</p>
+      
+      <p>Vous serez informée par email des changements importants.</p>
+      
+      <p>La poursuite de l'utilisation du service après modification vaut acceptation des nouvelles CGU.</p>
+
+      <h2>12. Contact</h2>
+      <p>Pour toute question concernant ces CGU :</p>
+      
+      <p><strong>Email :</strong> hello@muslimahsociety.com</p>
+
+      <div class="highlight">
+        <p><strong>Dernière mise à jour :</strong> Février 2026</p>
+      </div>
+
+      <a href="index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+  </div>
 
 </body>
 </html>

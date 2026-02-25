@@ -1,40 +1,340 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Politique de confidentialité — Muslimah Society</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Politique de Confidentialité — Muslimah Society</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+:root{
+      --rose:#E8D7DF;
+      --mauve:#C8B6D8;
+      --beige:#F5EFE8;
+      --cream:#FCFAF8;
+      --gold:#C6A86B;
+      --text:#2C2C2C;
+      --shadow: 0 18px 45px rgba(0,0,0,.08);
+      --shadow2: 0 10px 30px rgba(0,0,0,.06);
+      --radius: 26px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:'Montserrat',sans-serif;
+      background:var(--cream);
+      color:var(--text);
+      line-height:1.7;
+      padding-top:90px;
+    }
+    h1,h2,h3{font-family:'Playfair Display',serif}
+    
+    .navbar{
+      position:fixed; top:0; left:0; right:0;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:18px 28px;
+      background:rgba(255,255,255,.78);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(200,182,216,.35);
+      z-index:999;
+    }
+    .logo{
+      font-family:'Playfair Display',serif;
+      font-size:22px;
+      letter-spacing:.2px;
+      color:var(--gold);
+      display:flex; align-items:center; gap:10px;
+      text-decoration:none;
+    }
+    .logo-badge{
+      width:34px;height:34px;border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--beige));
+      border: 1px solid rgba(198,168,107,.35);
+      box-shadow: 0 8px 20px rgba(0,0,0,.06);
+      position:relative;
+    }
+    .logo-badge::after{
+      content:"";
+      position:absolute; inset:8px;
+      border-radius:50%;
+      border: 1px dashed rgba(198,168,107,.55);
+      opacity:.9;
+    }
+
+    .container{
+      max-width:900px;
+      margin:0 auto;
+      padding:40px 20px;
+    }
+
+    .legal-header{
+      text-align:center;
+      padding:40px 20px;
+      background: linear-gradient(135deg, var(--rose), var(--mauve));
+      margin:-40px -20px 40px;
+      border-radius:0 0 30px 30px;
+    }
+    .legal-header h1{
+      font-size:clamp(32px, 4vw, 48px);
+      color:#fff;
+      margin-bottom:10px;
+    }
+    .legal-header p{
+      color:rgba(255,255,255,.90);
+      font-size:16px;
+    }
+
+    .legal-content{
+      background:rgba(255,255,255,.85);
+      border:1px solid rgba(200,182,216,.25);
+      border-radius:var(--radius);
+      padding:40px;
+      box-shadow:var(--shadow2);
+    }
+
+    .legal-content h2{
+      font-size:28px;
+      color:var(--gold);
+      margin:30px 0 15px;
+      padding-bottom:10px;
+      border-bottom:2px solid var(--beige);
+    }
+    .legal-content h2:first-child{
+      margin-top:0;
+    }
+
+    .legal-content h3{
+      font-size:20px;
+      color:var(--mauve);
+      margin:20px 0 10px;
+    }
+
+    .legal-content p{
+      margin-bottom:15px;
+      color:rgba(44,44,44,.75);
+    }
+
+    .legal-content ul{
+      margin:15px 0 15px 25px;
+      color:rgba(44,44,44,.75);
+    }
+    .legal-content li{
+      margin-bottom:8px;
+    }
+
+    .highlight{
+      background:var(--beige);
+      padding:20px;
+      border-radius:16px;
+      margin:20px 0;
+      border-left:4px solid var(--gold);
+    }
+
+    .back-link{
+      display:inline-block;
+      margin-top:30px;
+      padding:12px 24px;
+      background:var(--mauve);
+      color:#fff;
+      text-decoration:none;
+      border-radius:999px;
+      font-weight:600;
+      transition:.3s;
+    }
+    .back-link:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow2);
+    }
+
+    @media (max-width:768px){
+      .legal-content{padding:25px;}
+    }
+  </style>
 </head>
 <body>
 
-<h1>Politique de confidentialité</h1>
+<header class="navbar">
+    <a class="logo" href="index.html"><span class="logo-badge"></span>Muslimah Society</a>
+  </header>
 
-<p>
-Muslimah Society collecte certaines données personnelles :
-</p>
+  <div class="container">
+    <div class="legal-header">
+      <h1>Politique de Confidentialité</h1>
+      <p>Comment nous protégeons vos données personnelles</p>
+    </div>
 
-<ul>
-<li>Email</li>
-<li>Nom</li>
-<li>Données de connexion</li>
-</ul>
+    <div class="legal-content">
+      
+      <h2>1. Introduction</h2>
+      <p>Muslimah Society s'engage à protéger la vie privée et les données personnelles de ses utilisatrices.</p>
+      
+      <p>Cette politique de confidentialité explique quelles données nous collectons, pourquoi nous les collectons, et comment nous les utilisons.</p>
 
-<p>
-Ces données sont utilisées uniquement pour :
-</p>
+      <div class="highlight">
+        <p><strong>✦ Nous ne vendons jamais vos données à des tiers.</strong></p>
+      </div>
 
-<ul>
-<li>Fournir l'accès à la plateforme</li>
-<li>Gérer les abonnements</li>
-<li>Améliorer les services</li>
-</ul>
+      <h2>2. Données collectées</h2>
+      
+      <h3>2.1 Données que vous nous fournissez</h3>
+      <p>Lorsque vous créez un compte sur Muslimah Society, nous collectons :</p>
+      <ul>
+        <li><strong>Nom complet</strong></li>
+        <li><strong>Adresse email</strong></li>
+        <li><strong>Mot de passe</strong> (chiffré, nous ne pouvons pas le voir)</li>
+      </ul>
 
-<p>
-Les données sont stockées de manière sécurisée via Supabase.
-</p>
+      <h3>2.2 Données de paiement</h3>
+      <p>Si vous souscrivez à un abonnement :</p>
+      <ul>
+        <li><strong>Informations de paiement</strong> : gérées directement par Stripe (notre processeur de paiement sécurisé)</li>
+        <li>Nous ne stockons JAMAIS vos numéros de carte bancaire</li>
+        <li>Nous recevons uniquement une confirmation de paiement</li>
+      </ul>
 
-<p>
-Vous pouvez demander la suppression de vos données à tout moment.
-</p>
+      <h3>2.3 Données d'utilisation</h3>
+      <p>Pour améliorer votre expérience :</p>
+      <ul>
+        <li>Pages visitées</li>
+        <li>PDFs téléchargés</li>
+        <li>Audios écoutés</li>
+        <li>Participation aux événements</li>
+      </ul>
+
+      <h3>2.4 Données techniques</h3>
+      <ul>
+        <li>Adresse IP</li>
+        <li>Type de navigateur</li>
+        <li>Système d'exploitation</li>
+        <li>Cookies techniques (uniquement pour la connexion)</li>
+      </ul>
+
+      <h2>3. Utilisation des données</h2>
+      <p>Nous utilisons vos données personnelles pour :</p>
+      
+      <h3>3.1 Fourniture du service</h3>
+      <ul>
+        <li>Créer et gérer votre compte</li>
+        <li>Vous donner accès aux contenus (bibliothèque, audithèque)</li>
+        <li>Gérer votre abonnement</li>
+        <li>Vous inscrire aux événements VIP</li>
+      </ul>
+
+      <h3>3.2 Communication</h3>
+      <ul>
+        <li>Vous envoyer des emails de confirmation (inscription, abonnement)</li>
+        <li>Newsletter hebdomadaire (si vous y êtes inscrite)</li>
+        <li>Invitations aux événements</li>
+        <li>Rappels de renouvellement d'abonnement</li>
+      </ul>
+
+      <h3>3.3 Amélioration du service</h3>
+      <ul>
+        <li>Comprendre comment vous utilisez la plateforme</li>
+        <li>Identifier les contenus les plus appréciés</li>
+        <li>Améliorer l'expérience utilisateur</li>
+      </ul>
+
+      <h2>4. Partage des données</h2>
+      
+      <h3>4.1 Nous NE partageons PAS vos données avec :</h3>
+      <ul>
+        <li>❌ Des annonceurs</li>
+        <li>❌ Des sociétés de marketing</li>
+        <li>❌ Des courtiers en données</li>
+        <li>❌ Des réseaux sociaux</li>
+      </ul>
+
+      <h3>4.2 Nous partageons uniquement avec :</h3>
+      <ul>
+        <li><strong>Stripe</strong> : pour le traitement sécurisé des paiements</li>
+        <li><strong>Supabase</strong> : pour l'hébergement sécurisé de la base de données</li>
+        <li><strong>Vercel</strong> : pour l'hébergement du site web</li>
+        <li><strong>Resend</strong> : pour l'envoi des emails transactionnels</li>
+      </ul>
+
+      <div class="highlight">
+        <p><strong>Tous ces prestataires sont conformes au RGPD et garantissent la sécurité de vos données.</strong></p>
+      </div>
+
+      <h2>5. Sécurité des données</h2>
+      <p>Nous mettons en place des mesures de sécurité pour protéger vos données :</p>
+      <ul>
+        <li>🔒 <strong>Chiffrement SSL/TLS</strong> pour toutes les connexions</li>
+        <li>🔒 <strong>Mots de passe hachés</strong> (bcrypt)</li>
+        <li>🔒 <strong>Authentification sécurisée</strong> via Supabase</li>
+        <li>🔒 <strong>Serveurs sécurisés</strong> avec sauvegardes régulières</li>
+        <li>🔒 <strong>Accès restreint</strong> aux données (uniquement admins autorisés)</li>
+      </ul>
+
+      <h2>6. Vos droits</h2>
+      <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+
+      <h3>6.1 Droit d'accès</h3>
+      <p>Vous pouvez demander une copie de toutes vos données personnelles.</p>
+
+      <h3>6.2 Droit de rectification</h3>
+      <p>Vous pouvez modifier vos informations dans votre espace membre ou nous contacter.</p>
+
+      <h3>6.3 Droit à l'effacement</h3>
+      <p>Vous pouvez demander la suppression de votre compte et de toutes vos données.</p>
+
+      <h3>6.4 Droit d'opposition</h3>
+      <p>Vous pouvez vous opposer au traitement de vos données à tout moment.</p>
+
+      <h3>6.5 Droit à la portabilité</h3>
+      <p>Vous pouvez recevoir vos données dans un format lisible (CSV, JSON).</p>
+
+      <div class="highlight">
+        <p><strong>Pour exercer vos droits :</strong> Envoyez un email à <strong>hello@muslimahsociety.com</strong></p>
+        <p>Nous répondons sous 30 jours maximum.</p>
+      </div>
+
+      <h2>7. Cookies</h2>
+      <p>Nous utilisons uniquement des <strong>cookies techniques essentiels</strong> :</p>
+      <ul>
+        <li>Cookie de session (pour rester connectée)</li>
+        <li>Cookie de préférences (langue, thème)</li>
+      </ul>
+
+      <p><strong>Nous n'utilisons PAS :</strong></p>
+      <ul>
+        <li>❌ Cookies publicitaires</li>
+        <li>❌ Cookies de tracking (Google Analytics, Facebook Pixel, etc.)</li>
+        <li>❌ Cookies tiers</li>
+      </ul>
+
+      <h2>8. Conservation des données</h2>
+      <ul>
+        <li><strong>Compte actif :</strong> Nous conservons vos données tant que votre compte est actif</li>
+        <li><strong>Après suppression :</strong> Vos données sont supprimées sous 30 jours</li>
+        <li><strong>Données de paiement :</strong> Conservées 3 ans pour obligations légales comptables</li>
+        <li><strong>Logs serveur :</strong> Conservés 12 mois maximum</li>
+      </ul>
+
+      <h2>9. Données des mineurs</h2>
+      <p>Muslimah Society est réservé aux personnes de <strong>18 ans et plus</strong>.</p>
+      
+      <p>Si vous avez moins de 18 ans, vous devez obtenir le consentement de vos parents pour créer un compte.</p>
+
+      <h2>10. Modifications de cette politique</h2>
+      <p>Nous pouvons mettre à jour cette politique de confidentialité.</p>
+      
+      <p>En cas de changement important, nous vous préviendrons par email.</p>
+
+      <h2>11. Contact</h2>
+      <p>Pour toute question concernant vos données personnelles :</p>
+      
+      <p><strong>Email :</strong> hello@muslimahsociety.com</p>
+      <p><strong>Responsable des données :</strong> Zina, Directrice de Muslimah Society</p>
+
+      <div class="highlight">
+        <p><strong>Dernière mise à jour :</strong> Février 2026</p>
+      </div>
+
+      <a href="index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+  </div>
 
 </body>
 </html>
