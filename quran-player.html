@@ -1,542 +1,187 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Lecteur Qur'an — Muslimah Society</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Amiri:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Lecteur Coran — Muslimah Society</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <style>
-:root{
-      --rose:#E8D7DF;
-      --mauve:#C8B6D8;
-      --beige:#F5EFE8;
-      --cream:#FCFAF8;
-      --gold:#C6A86B;
-      --text:#2C2C2C;
-      --shadow: 0 18px 45px rgba(0,0,0,.08);
-      --shadow2: 0 10px 30px rgba(0,0,0,.06);
-      --radius: 26px;
-    }
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{
-      font-family:'Montserrat',sans-serif;
-      background:var(--cream);
-      color:var(--text);
-      line-height:1.7;
-      padding-top:90px;
-    }
-    h1,h2,h3{font-family:'Playfair Display',serif}
-    
-    .navbar{
-      position:fixed; top:0; left:0; right:0;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:18px 28px;
-      background:rgba(255,255,255,.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(200,182,216,.35);
-      z-index:999;
-      box-shadow:0 2px 10px rgba(0,0,0,.05);
-    }
-    .logo{
-      font-family:'Playfair Display',serif;
-      font-size:22px;
-      letter-spacing:.2px;
-      color:var(--gold);
-      display:flex; align-items:center; gap:10px;
-      text-decoration:none;
-    }
-    .logo-badge{
-      width:34px;height:34px;border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, #fff, var(--beige));
-      border: 1px solid rgba(198,168,107,.35);
-      box-shadow: 0 8px 20px rgba(0,0,0,.06);
-      position:relative;
-    }
-    .logo-badge::after{
-      content:"";
-      position:absolute; inset:8px;
-      border-radius:50%;
-      border: 1px dashed rgba(198,168,107,.55);
-      opacity:.9;
-    }
-
-    .container{
-      max-width:1200px;
-      margin:0 auto;
-      padding:20px;
-    }
-
-    .player-header{
-      background: linear-gradient(135deg, var(--rose), var(--mauve));
-      padding:40px 30px;
-      border-radius:var(--radius);
-      margin-bottom:30px;
-      text-align:center;
-      box-shadow:var(--shadow);
-    }
-    .player-header h1{
-      font-size:clamp(28px, 4vw, 42px);
-      color:#fff;
-      margin-bottom:12px;
-    }
-    .player-header p{
-      color:rgba(255,255,255,.90);
-      font-size:16px;
-    }
-
-    .controls{
-      background:rgba(255,255,255,.92);
-      border:2px solid rgba(200,182,216,.30);
-      border-radius:var(--radius);
-      padding:25px;
-      margin-bottom:25px;
-      box-shadow:var(--shadow2);
-    }
-    .controls-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
-      gap:20px;
-      margin-bottom:20px;
-    }
-    .control-group{
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-    }
-    .control-group label{
-      font-size:13px;
-      font-weight:600;
-      color:var(--gold);
-      text-transform:uppercase;
-      letter-spacing:.5px;
-    }
-    select{
-      padding:12px;
-      border-radius:12px;
-      border:2px solid rgba(200,182,216,.30);
-      background:rgba(255,255,255,.90);
-      font-size:15px;
-      cursor:pointer;
-      transition:.3s;
-      font-family:'Montserrat',sans-serif;
-    }
-    select:focus{
-      outline:none;
-      border-color:var(--mauve);
-      box-shadow: 0 0 0 4px rgba(200,182,216,.15);
-    }
-
-    .audio-controls{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:15px;
-      padding-top:20px;
-      border-top:2px solid var(--beige);
-    }
-    .btn-player{
-      width:60px;
-      height:60px;
-      border-radius:50%;
-      border:none;
-      background:var(--mauve);
-      color:#fff;
-      font-size:24px;
-      cursor:pointer;
-      transition:.3s;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:var(--shadow2);
-    }
-    .btn-player:hover{
-      transform:scale(1.1);
-      box-shadow:var(--shadow);
-    }
-    .btn-player.play{
-      width:70px;
-      height:70px;
-      background:var(--gold);
-      font-size:28px;
-    }
-    .btn-player:disabled{
-      opacity:.5;
-      cursor:not-allowed;
-    }
-
-    .verse-container{
-      background:rgba(255,255,255,.95);
-      border:2px solid rgba(200,182,216,.30);
-      border-radius:var(--radius);
-      padding:40px 30px;
-      margin-bottom:25px;
-      box-shadow:var(--shadow);
-      min-height:400px;
-    }
-    .verse-header{
-      text-align:center;
-      padding-bottom:25px;
-      border-bottom:2px solid var(--beige);
-      margin-bottom:30px;
-    }
-    .verse-header h2{
-      font-size:28px;
-      color:var(--gold);
-      margin-bottom:8px;
-    }
-    .verse-header .ayah-number{
-      font-size:16px;
-      color:rgba(44,44,44,.65);
-      font-weight:600;
-    }
-
-    .bismillah{
-      font-family:'Amiri', serif;
-      font-size:clamp(20px, 3vw, 28px);
-      text-align:center;
-      color:var(--gold);
-      margin-bottom:20px;
-      direction:rtl;
-    }
-
-    .verse-arabic{
-      font-family:'Amiri', serif;
-      font-size:clamp(28px, 4vw, 36px);
-      line-height:2;
-      text-align:center;
-      color:var(--text);
-      margin-bottom:30px;
-      padding:20px;
-      background:var(--beige);
-      border-radius:20px;
-      direction:rtl;
-    }
-    .verse-arabic.playing{
-      background: linear-gradient(135deg, rgba(232,215,223,.60), rgba(200,182,216,.40));
-      border:2px solid var(--gold);
-    }
-
-    .verse-translation{
-      font-size:18px;
-      line-height:1.8;
-      color:rgba(44,44,44,.80);
-      text-align:center;
-      padding:20px;
-    }
-
-    .verse-nav{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding-top:20px;
-      border-top:2px solid var(--beige);
-    }
-    .btn-nav{
-      padding:12px 24px;
-      border-radius:999px;
-      border:2px solid var(--mauve);
-      background:rgba(255,255,255,.90);
-      color:var(--mauve);
-      font-weight:600;
-      cursor:pointer;
-      transition:.3s;
-      font-family:'Montserrat',sans-serif;
-      font-size:14px;
-      text-transform:uppercase;
-      letter-spacing:.5px;
-    }
-    .btn-nav:hover{
-      background:var(--mauve);
-      color:#fff;
-      transform:translateY(-2px);
-    }
-    .btn-nav:disabled{
-      opacity:.4;
-      cursor:not-allowed;
-    }
-
-    .loading{
-      text-align:center;
-      padding:60px 20px;
-      color:var(--mauve);
-      font-size:18px;
-    }
-    .spinner{
-      border:4px solid var(--beige);
-      border-top:4px solid var(--mauve);
-      border-radius:50%;
-      width:50px;
-      height:50px;
-      animation:spin 1s linear infinite;
-      margin:0 auto 20px;
-    }
-    @keyframes spin{
-      0%{transform:rotate(0deg)}
-      100%{transform:rotate(360deg)}
-    }
-
-    @media (max-width:768px){
-      .controls-grid{
-        grid-template-columns:1fr;
-      }
-      .verse-arabic{
-        font-size:24px;
-      }
-      .verse-translation{
-        font-size:16px;
-      }
-    }
+:root{--gold:#c9a84c;--gold-p:#f0e4c0;--blush:#e8d5d0;--blush-l:#f5ede9;--ivory:#fdf8f2;--text:#3d2b25;--text-m:#7a5a50;--text-l:#a89080;--rose-d:#b08880;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Cormorant Garamond',serif;background:var(--ivory);color:var(--text);}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+.ms-header{position:sticky;top:0;z-index:800;background:linear-gradient(to bottom,rgba(253,248,242,.98),rgba(250,244,236,.95));border-bottom:1px solid var(--gold-p);backdrop-filter:blur(10px);}
+.ms-header .inner{height:68px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.ms-logo{display:flex;align-items:center;gap:10px;}
+.ms-logo-mark{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,rgba(255,252,245,1),rgba(240,228,200,.55));}
+.ms-logo-mark span{font-family:'Cinzel',serif;font-size:12px;color:var(--gold);}
+.ms-logo-name{font-family:'Cinzel',serif;font-size:12px;letter-spacing:3px;color:var(--text);}
+.ms-nav{display:flex;gap:10px;align-items:center;}
+.btn{display:inline-flex;align-items:center;padding:8px 18px;min-height:38px;border-radius:30px;font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;border:1.5px solid transparent;cursor:pointer;transition:all .3s;}
+.btn-ghost{border-color:rgba(201,168,76,.3);color:var(--text-m);background:transparent;}.btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+.btn-gold{border-color:var(--gold);background:var(--gold);color:#fff;}.btn-gold:hover{background:#b8923e;}
+.btn-vip{border-color:var(--rose-d);background:var(--rose-d);color:#fff;}.btn-vip:hover{background:#9a7068;}
+.btn-danger{border-color:rgba(180,60,60,.3);color:#8b3a3a;background:transparent;}.btn-danger:hover{background:rgba(180,60,60,.08);}
+.page{padding:32px 0 64px;}
+.hero-sm{padding:36px 0 28px;background:linear-gradient(160deg,var(--blush-l),var(--blush) 40%,rgba(216,208,228,.5) 80%,var(--blush-l));border-bottom:1px solid rgba(201,168,76,.12);text-align:center;}
+.chip{display:inline-block;padding:5px 14px;border-radius:20px;border:1px solid var(--gold-p);background:rgba(255,252,245,.85);font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.hero-title{font-family:'Cinzel',serif;font-size:clamp(20px,4vw,32px);font-weight:500;letter-spacing:2px;margin-bottom:8px;}
+.hero-sub{font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--text-m);}
+.card{background:rgba(255,252,248,.9);border:1px solid rgba(201,168,76,.2);border-radius:4px;box-shadow:0 8px 28px rgba(61,43,37,.08);overflow:hidden;position:relative;margin-bottom:16px;}
+.card::before{content:'';position:absolute;top:6px;left:6px;width:12px;height:12px;border-top:1px solid var(--gold-p);border-left:1px solid var(--gold-p);}
+.card::after{content:'';position:absolute;bottom:6px;right:6px;width:12px;height:12px;border-bottom:1px solid var(--gold-p);border-right:1px solid var(--gold-p);}
+.card-head{padding:16px 22px;background:linear-gradient(155deg,rgba(232,213,208,.4),rgba(216,208,228,.18));border-bottom:1px solid rgba(201,168,76,.14);display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.card-head h2,.card-head h3{font-family:'Cinzel',serif;font-size:15px;font-weight:500;letter-spacing:1px;}
+.card-body{padding:22px 24px 26px;}
+.card-body p{font-size:17px;line-height:1.9;color:var(--text-m);margin-bottom:12px;}
+.card-body h2,.card-body h3{font-family:'Cinzel',serif;font-size:16px;font-weight:500;letter-spacing:1px;color:var(--text);margin:20px 0 10px;}
+.card-body h2:first-child,.card-body h3:first-child{margin-top:0;}
+.card-body ul{list-style:none;margin:8px 0 14px;}
+.card-body li{font-size:16px;color:var(--text-m);padding:6px 0 6px 20px;position:relative;border-bottom:1px solid rgba(201,168,76,.08);}
+.card-body li:last-child{border-bottom:none;}
+.card-body li::before{content:'✦';position:absolute;left:0;color:var(--gold);font-size:9px;top:10px;}
+.kicker{font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px;}
+.badge{display:inline-block;font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border-radius:20px;}
+.badge.member{background:rgba(201,168,76,.12);color:#9a7830;border:1px solid rgba(201,168,76,.28);}
+.badge.vip{background:rgba(176,136,128,.15);color:var(--rose-d);border:1px solid rgba(176,136,128,.28);}
+.badge.active{background:rgba(80,140,100,.1);color:#3a6b4a;border:1px solid rgba(80,140,100,.25);}
+.badge.inactive{background:rgba(160,144,128,.1);color:var(--text-l);border:1px solid rgba(160,144,128,.2);}
+.badge.none{background:rgba(160,144,128,.08);color:var(--text-l);border:1px solid rgba(160,144,128,.18);}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+@media(max-width:600px){.grid2,.grid3,.grid4{grid-template-columns:1fr;}}
+@media(min-width:601px) and (max-width:800px){.grid4{grid-template-columns:repeat(2,1fr);}}
+.stat-card{background:rgba(240,228,192,.15);border:1px solid rgba(201,168,76,.18);border-radius:3px;padding:20px;text-align:center;}
+.stat-value{font-family:'Cinzel',serif;font-size:28px;font-weight:500;color:var(--gold);margin-bottom:6px;}
+.stat-label{font-size:13px;font-style:italic;color:var(--text-l);}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+.note{padding:14px 18px;border-left:3px solid var(--gold);background:linear-gradient(to right,rgba(201,168,76,.07),transparent);border-radius:0 3px 3px 0;font-size:16px;font-style:italic;color:var(--text-m);margin-bottom:14px;}
+.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:22px;}
+.info-item{padding:16px;background:rgba(240,228,192,.12);border:1px solid rgba(201,168,76,.15);border-radius:3px;}
+.info-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-l);margin-bottom:8px;}
+.info-value{font-size:20px;font-family:'Cinzel',serif;color:var(--gold);}
+table{width:100%;border-collapse:collapse;}
+th{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);padding:10px 12px;text-align:left;border-bottom:1px solid rgba(201,168,76,.2);background:rgba(240,228,192,.1);}
+td{padding:10px 12px;font-size:15px;color:var(--text-m);border-bottom:1px solid rgba(201,168,76,.08);}
+tr:last-child td{border-bottom:none;}
+input,select{width:100%;padding:10px 14px;border:1px solid rgba(201,168,76,.25);border-radius:3px;background:rgba(255,252,245,.8);font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--text);outline:none;transition:border-color .3s;}
+input:focus,select:focus{border-color:rgba(201,168,76,.6);}
+.search-bar{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+.search-bar input{flex:1;min-width:180px;}
+.search-bar select{width:160px;flex-shrink:0;}
+.reward-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+@media(max-width:600px){.reward-grid{grid-template-columns:1fr;}}
+.reward-card{background:rgba(255,252,248,.9);border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:18px;text-align:center;}
+.reward-card.locked{opacity:.55;filter:grayscale(.4);}
+.reward-card h3{font-family:'Cinzel',serif;font-size:13px;letter-spacing:1px;margin:10px 0 6px;}
+.reward-card p{font-size:14px;font-style:italic;color:var(--text-m);}
+.reward-icon{font-size:28px;margin-bottom:4px;}
+.code-box{background:rgba(240,228,192,.2);border:1px solid rgba(201,168,76,.3);border-radius:3px;padding:16px 20px;font-family:'Cinzel',serif;font-size:22px;letter-spacing:4px;text-align:center;color:var(--gold);margin:14px 0;}
+.quran-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+.quran-controls select{width:auto;min-width:140px;}
+.audio-player{width:100%;margin:14px 0;}
+.verse-display{font-size:22px;line-height:2.2;text-align:right;direction:rtl;color:var(--text);padding:20px;background:rgba(240,228,192,.1);border-radius:3px;border:1px solid rgba(201,168,76,.15);margin-bottom:12px;}
+.verse-trans{font-size:16px;font-style:italic;color:var(--text-m);line-height:1.8;padding:0 4px;}
+.nav-verse{display:flex;justify-content:space-between;margin-top:12px;}
+.ms-footer{background:linear-gradient(to bottom,#ede3dc,#e4d8d0);border-top:1px solid var(--gold-p);padding:22px 0;margin-top:32px;}
+.ft-copy{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--text-l);}
+@media(max-width:719px){.ms-logo-name{display:none;}}
   </style>
 </head>
 <body>
-
-<header class="navbar">
-    <a class="logo" href="index.html"><span class="logo-badge"></span>Muslimah Society</a>
-  </header>
-
-  <div class="container">
-    
-    <div class="player-header">
-      <h1>📖 Lecteur Qur'an</h1>
-      <p>Lis et écoute le Qur'an avec traduction Nour International</p>
+<header class="ms-header">
+  <div class="wrap"><div class="inner">
+    <a class="ms-logo" href="index.html">
+      <div class="ms-logo-mark"><span>MS</span></div>
+      <div class="ms-logo-name">MUSLIMAH SOCIETY</div>
+    </a>
+    <div class="ms-nav">
+      <a class="btn btn-ghost" href="dashboard.html">Mon espace</a>
     </div>
-
-    <div class="controls">
-      <div class="controls-grid">
-        
-        <div class="control-group">
-          <label>Sourate</label>
-          <select id="surahSelect">
-            <option value="">Chargement...</option>
-          </select>
-        </div>
-
-        <div class="control-group">
-          <label>Récitateur</label>
-          <select id="reciterSelect">
-            <option value="ar.abdulbasitmurattal">Abdul Basit (Murattal)</option>
-            <option value="ar.husary">Al-Hussary</option>
-            <option value="ar.minshawi">Al-Minshawi</option>
-            <option value="ar.shaatree">Abu Bakr Al-Shatri</option>
-          </select>
-        </div>
-
-        <div class="control-group">
-          <label>Traduction</label>
-          <select id="translationSelect">
-            <option value="en.sahih">Nour International (English)</option>
-          </select>
-        </div>
-
-      </div>
-
-      <div class="audio-controls">
-        <button class="btn-player" id="prevBtn" title="Verset précédent">⏮</button>
-        <button class="btn-player play" id="playBtn" title="Lecture">▶</button>
-        <button class="btn-player" id="nextBtn" title="Verset suivant">⏭</button>
-      </div>
-    </div>
-
-    <div class="verse-container">
-      <div id="verseContent">
-        <div class="loading">
-          <div class="spinner"></div>
-          <p>Chargement du Qur'an...</p>
-        </div>
-      </div>
-    </div>
-
+  </div></div>
+</header>
+<section class="hero-sm">
+  <div class="wrap">
+    <div class="chip">Espace Member</div>
+    <div class="hero-title">Lecteur du Saint Coran</div>
+    <div class="hero-sub">Écoutez et lisez le Coran noble</div>
   </div>
-
-  <script>
-    let currentSurah = 1;
-    let currentAyah = 1;
-    let totalAyahs = 7;
-    let isPlaying = false;
-    let audio = new Audio();
-    let surahsList = [];
-
-    const surahSelect = document.getElementById('surahSelect');
-    const reciterSelect = document.getElementById('reciterSelect');
-    const playBtn = document.getElementById('playBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const verseContent = document.getElementById('verseContent');
-
-    async function init() {
-      await loadSurahs();
-      await loadVerse();
-    }
-
-    async function loadSurahs() {
-      try {
-        const response = await fetch('https://api.alquran.cloud/v1/surah');
-        const data = await response.json();
-        
-        if (data.code !== 200) throw new Error('Erreur API');
-        
-        surahsList = data.data;
-        
-        surahSelect.innerHTML = surahsList.map(surah => 
-          `<option value="${surah.number}">${surah.number}. ${surah.englishName} - ${surah.name} (${surah.numberOfAyahs} versets)</option>`
-        ).join('');
-        
-        surahSelect.value = currentSurah;
-        
-      } catch (err) {
-        console.error('Erreur sourates:', err);
-        surahSelect.innerHTML = '<option>❌ Erreur</option>';
-      }
-    }
-
-    async function loadVerse() {
-      try {
-        verseContent.innerHTML = '<div class="loading"><div class="spinner"></div><p>Chargement...</p></div>';
-        
-        const translation = translationSelect.value;
-        
-        const response = await fetch(
-          `https://api.alquran.cloud/v1/ayah/${currentSurah}:${currentAyah}/editions/quran-simple,${translation}`
-        );
-        
-        const result = await response.json();
-        
-        if (result.code !== 200) throw new Error('Erreur API');
-        
-        const [arabic, translationData] = result.data;
-        totalAyahs = arabic.surah.numberOfAyahs;
-        
-        let bismillahHTML = '';
-        if (currentAyah === 1 && currentSurah !== 1 && currentSurah !== 9) {
-          bismillahHTML = '<div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>';
-        }
-        
-        verseContent.innerHTML = `
-          <div class="verse-header">
-            <h2>${arabic.surah.englishName} - ${arabic.surah.name}</h2>
-            <p class="ayah-number">Verset ${arabic.numberInSurah} / ${totalAyahs}</p>
-          </div>
-          
-          ${bismillahHTML}
-          
-          <div class="verse-arabic" id="verseArabic">${arabic.text}</div>
-          
-          <div class="verse-translation">${translationData.text}</div>
-          
-          <div class="verse-nav">
-            <button class="btn-nav" id="prevVerseBtn" ${currentAyah === 1 ? 'disabled' : ''}>← Précédent</button>
-            <button class="btn-nav" id="nextVerseBtn" ${currentAyah === totalAyahs ? 'disabled' : ''}>Suivant →</button>
-          </div>
-        `;
-        
-        document.getElementById('prevVerseBtn')?.addEventListener('click', prevVerse);
-        document.getElementById('nextVerseBtn')?.addEventListener('click', nextVerse);
-        
-        loadAudio();
-        
-      } catch (err) {
-        console.error('Erreur:', err);
-        verseContent.innerHTML = '<div class="loading"><p style="color:#f44336;">❌ Erreur de chargement</p></div>';
-      }
-    }
-
-    function loadAudio() {
-      const reciter = reciterSelect.value;
-      const surahPadded = String(currentSurah).padStart(3, '0');
-      const ayahPadded = String(currentAyah).padStart(3, '0');
-      
-      audio.src = `https://cdn.islamic.network/quran/audio/128/${reciter}/${surahPadded}${ayahPadded}.mp3`;
-      audio.load();
-    }
-
-    playBtn.addEventListener('click', () => {
-      if (isPlaying) {
-        audio.pause();
-        playBtn.textContent = '▶';
-        document.getElementById('verseArabic')?.classList.remove('playing');
-      } else {
-        audio.play();
-        playBtn.textContent = '⏸';
-        document.getElementById('verseArabic')?.classList.add('playing');
-      }
-      isPlaying = !isPlaying;
-    });
-
-    audio.addEventListener('ended', () => {
-      playBtn.textContent = '▶';
-      isPlaying = false;
-      document.getElementById('verseArabic')?.classList.remove('playing');
-      if (currentAyah < totalAyahs) {
-        setTimeout(() => nextVerse(), 1000);
-      }
-    });
-
-    audio.addEventListener('error', () => {
-      console.error('Erreur audio');
-      playBtn.textContent = '▶';
-      isPlaying = false;
-    });
-
-    function nextVerse() {
-      if (currentAyah < totalAyahs) {
-        currentAyah++;
-      } else if (currentSurah < 114) {
-        currentSurah++;
-        currentAyah = 1;
-        surahSelect.value = currentSurah;
-      }
-      audio.pause();
-      isPlaying = false;
-      playBtn.textContent = '▶';
-      loadVerse();
-    }
-
-    function prevVerse() {
-      if (currentAyah > 1) {
-        currentAyah--;
-        audio.pause();
-        isPlaying = false;
-        playBtn.textContent = '▶';
-        loadVerse();
-      }
-    }
-
-    nextBtn.addEventListener('click', nextVerse);
-    prevBtn.addEventListener('click', prevVerse);
-
-    surahSelect.addEventListener('change', (e) => {
-      currentSurah = parseInt(e.target.value);
-      currentAyah = 1;
-      audio.pause();
-      isPlaying = false;
-      playBtn.textContent = '▶';
-      loadVerse();
-    });
-
-    reciterSelect.addEventListener('change', () => {
-      audio.pause();
-      isPlaying = false;
-      playBtn.textContent = '▶';
-      loadAudio();
-    });
-
-    translationSelect.addEventListener('change', () => {
-      loadVerse();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') nextVerse();
-      if (e.key === 'ArrowLeft') prevVerse();
-      if (e.key === ' ') {
-        e.preventDefault();
-        playBtn.click();
-      }
-    });
-
-    init();
-  </script>
-
+</section>
+<main class="page">
+  <div class="wrap">
+<div class="card">
+  <div class="card-head"><h2>Sourates</h2></div>
+  <div class="card-body">
+    <div class="quran-controls">
+      <select id="surahSel" onchange="loadSurah()"><option value="">Choisir une sourate…</option></select>
+      <select id="verseSel" onchange="loadVerse()"><option value="">Verset</option></select>
+    </div>
+    <div class="verse-display" id="arabicText">Sélectionnez une sourate pour commencer</div>
+    <div class="verse-trans" id="transText"></div>
+    <audio class="audio-player" id="audioPlayer" controls></audio>
+    <div class="nav-verse">
+      <button class="btn btn-ghost" onclick="prevVerse()">← Précédent</button>
+      <button class="btn btn-ghost" onclick="nextVerse()">Suivant →</button>
+    </div>
+  </div>
+</div>
+  </div>
+</main>
+<footer class="ms-footer">
+  <div class="wrap"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+    <span class="ft-copy">© 2026 Institut Al Muta&#8217;allim — Muslimah Society</span>
+    <span class="ft-copy" style="display:flex;gap:16px;">
+      <a href="index.html" style="color:var(--text-l);">Accueil</a>
+      <a href="privacy.html" style="color:var(--text-l);">Confidentialité</a>
+      <a href="terms.html" style="color:var(--text-l);">CGU</a>
+    </span>
+  </div></div>
+</footer>
+<script src="js/supabaseClient.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/gate.js"></script>
+<script>
+requireMember();
+let currentSurah=1, currentVerse=1, maxVerse=7;
+async function loadSurahs(){
+  try{
+    const r = await fetch('https://api.alquran.cloud/v1/surah');
+    const d = await r.json();
+    const sel = document.getElementById('surahSel');
+    d.data.forEach(s=>{ const o=document.createElement('option'); o.value=s.number; o.textContent=s.number+'. '+s.englishName+' ('+s.name+')'; sel.appendChild(o); });
+  }catch(e){ console.error(e); }
+}
+async function loadSurah(){
+  currentSurah = document.getElementById('surahSel').value;
+  if(!currentSurah) return;
+  currentVerse=1;
+  const r=await fetch('https://api.alquran.cloud/v1/surah/'+currentSurah);
+  const d=await r.json();
+  maxVerse=d.data.numberOfAyahs;
+  const vs=document.getElementById('verseSel');
+  vs.innerHTML='<option>Verset</option>';
+  for(let i=1;i<=maxVerse;i++){ const o=document.createElement('option');o.value=i;o.textContent='Verset '+i;vs.appendChild(o); }
+  loadVerse();
+}
+async function loadVerse(){
+  const v=document.getElementById('verseSel').value||currentVerse;
+  currentVerse=parseInt(v)||1;
+  try{
+    const r=await fetch('https://api.alquran.cloud/v1/ayah/'+currentSurah+':'+currentVerse+'/editions/quran-uthmani,en.sahih');
+    const d=await r.json();
+    document.getElementById('arabicText').textContent=d.data[0]?.text||'';
+    document.getElementById('transText').textContent=d.data[1]?.text||'';
+    const audio=document.getElementById('audioPlayer');
+    audio.src='https://cdn.islamic.network/quran/audio/128/ar.alafasy/'+((parseInt(currentSurah)-1)*6236+currentVerse)+'.mp3';
+    audio.load();
+  }catch(e){ console.error(e); }
+}
+function nextVerse(){ if(currentVerse<maxVerse){ currentVerse++; document.getElementById('verseSel').value=currentVerse; loadVerse(); } }
+function prevVerse(){ if(currentVerse>1){ currentVerse--; document.getElementById('verseSel').value=currentVerse; loadVerse(); } }
+loadSurahs();
+</script>
 </body>
 </html>
